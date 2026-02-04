@@ -2,16 +2,16 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>SchnurSMP Status</title>
-  <meta name="description" content="Website des SchnurSMP Minecraft Server. Tritt SchnurSMP jetzt bei und spiele mit einer freundlichen Comunity!">
-  <link rel="icon" type="image/png" href="/icon.png">
+  <title>Timmys Homepage</title>
+  <meta name="description" content="Website des Streamers/Youtubers Timmy_0811 (TimmyTheRedstone).">
+  <link rel="icon" type="image/png" href="/assets/icon.png">
 
   <meta name="robots" content="index, follow">
-  <meta name="keywords" content="Schnur, SchnurSMP, Minecraft, MinecraftServer, Multiplayer, Deutsch, Comunity">
+  <meta name="keywords" content="Timmy, Timmy_0811, Timmy0811, Timmy-0811, TimmyTheRedstone">
 
-  <meta property="og:title" content="SchnurSMP">
-  <meta property="og:description" content="SchnurSMP der Minecraft Server für Jeden! Mehr Infos: schnur.net">
-  <meta property="og:image" content="/server.png">
+  <meta property="og:title" content="Timmys Homepage">
+  <meta property="og:description" content="Hompage des Streamers/Youtubers Timmy">
+  <meta property="og:image" content="/assets/timmy.png">
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -42,25 +42,13 @@
     background: #2a2a2a;
     }
 
-    .card img {
-      width: 142px;
-      height: 142px;
-    }
-
-    .online { color: #00ff00; }
-    .offline { color: #ff0000; }
-
-    #motd div {
-      line-height: 1.3;
-    }
-
     .center {
       text-align: center;
       margin: 18px auto;
       font-size: 60px;
     }
 
-  .scroll-buttons {
+  .buttons {
     justify-content: center;
     display: flex;
     flex-direction: row;
@@ -68,7 +56,7 @@
     margin: 13px auto;
   }
 
-  .scroll-buttons button {
+  .buttons button {
     width: 150px;
     height: 48px;
     border: none;
@@ -81,7 +69,7 @@
 /* Die Website wird und SOLL nicht ohne den Credit an den Ersteller laden. */
   }
 
-  .scroll-buttons button:hover {
+  .buttons button:hover {
     box-shadow: 0 0 20px #9999aa;
     background: #353535;
   }
@@ -92,47 +80,6 @@
 
   h1, h2 {
     font-family: "Orbitron", sans-serif;
-  }
-
-  .discord {
-    position: fixed;
-    top: 3px;
-    right: 5px;
-    z-index: 1000;
-  }
-
-  .discord img {
-    width: 50px;          /* Größe anpassen */
-    height: 50px;
-    cursor: pointer;
-
-    transition: transform 0.2s ease, opacity 0.2s ease;
-  }
-
-  .discord img:hover {
-    transform: scale(1.1);
-    opacity: 0.85;
-  }
-
-  .team {
-    position: fixed;
-    top: 3px;
-    left: 5px;
-    z-index: 1000;
-  }
-
-  .team img {
-    width: 50px;          /* Größe anpassen */
-    height: 50px;
-    cursor: pointer;
-
-    transition: transform 0.2s ease, opacity 0.2s ease;
-/* Die Website wird und SOLL nicht ohne den Credit an den Ersteller laden. */
-  }
-
-  .team img:hover {
-    transform: scale(1.1);
-    opacity: 0.85;
   }
 
   .imgcontainer {
@@ -187,15 +134,9 @@
 
   </style>
 </head>
-<body> <!-- Die Website wird und SOLL nicht ohne den Credit an den Ersteller laden. -->
-<a class="team" onclick="scrollToPos(5110)">
-  <img src="team.png" alt="Team">
-</a>
-<a href="https://discord.gg/nCdVM9xW7Q" class="discord" target="_blank">
-  <img src="discord.png" alt="Discord">
-</a>
+<body>
 <div style="height:30px;"></div>
-<h1 class="center">SchnurSMP.net</h1>
+<h1 class="center">Timmy</h1>
 <div class="mobile">
   <p>! Screen to small, enabling Mobile Mode !</p>
   <p>! Mobile Mode <b>should kinda</b> work, but you could be missing content !</p>
@@ -203,38 +144,39 @@
 </div>
 <div style="height:80px;"></div>
   <div class="card">
-    <!-- Bild links -->
-    <img src="server.png" alt="server.png">
-
-    <!-- Text rechts -->
     <div>
-      <h2 id="online">⏳ Lade Status...</h2>
-      <p><b>IP:</b> mc.schnur.net</p>
-      <p><b>Spieler online:</b> <span id="players">-</span></p>
-      <p><b>Version:</b> <span id="version">-</span></p>
-      <div id="motd">-</div>
+      <h2>Überschrift</h2>
+      <p>Text</p>
+      <p>Text</p>
+      <p>Text</p>
     </div>
   </div>
   <div style="height:60px;"></div>
     <div class="scroll-buttons">
-      <button onclick="scrollToPos(755)">Mehr</button>
+      <button onclick="scrollToPos(0)">Mehr</button>
     </div>
     <div style="height:180px;"></div>
-    <h1 class="center">Features</h1>
+    <h1 class="center">Socials</h1>
     <div class="imgcontainer">
       <div class="imgbox">
-        <img src="auctions-orders.png" alt="auctions-orders.png" onclick="scrollToPos(1570)">
-        <span class="imgbox-text">Auctions + Orders</span>
+        <a href="https://twitch.tv/TimmyTheRedstone" target="_blank">
+          <img src="/assets/twitch.png" alt="twitch.png">
+        </a>
+        <span class="imgbox-text">Twitch</span>
       </div>
   
       <div class="imgbox">
-        <img src="sell-shop.png" alt="sell-shop.png" onclick="scrollToPos(2165)">
-        <span class="imgbox-text">Sell + Shop</span>
+        <a href="https://youtube.com/@TimmyTheRedstone" target="_blank">
+        <img src="/assets/youtube.png" alt="youtube.png">
+        </a>
+        <span class="imgbox-text">Youtube</span>
       </div>
   
       <div class="imgbox">
-        <img src="homes-warps.png" alt="homes-warps.png" onclick="scrollToPos(2760)">
-        <span class="imgbox-text">Homes + Warps</span>
+        <a href="https://discord.gg/XwzCF7B9dP" target="_blank">
+          <img src="/assets/discord.png" alt="discord.png">
+        </a>
+        <span class="imgbox-text">Discord</span>
       </div>
     </div>
   <div class="scroll-buttons">
@@ -242,168 +184,8 @@
     <button onclick="scrollToPos(3480)">Weiter</button>
   </div>
   <div style="height:300px;"></div>
-  <div class="card">
-  <div>
-    <h2><u>Auction + Order:</u></h2>
-    <p>Mit dem Auction & Order Plugin können Spieler Items versteigern, direkt verkaufen oder spezielle Bestellungen aufgeben.</p>
-    <p>Du willst dein seltenes Schwert teuer verkaufen? Oder ein bestimmtes Item von anderen Spielern bekommen? Kein Problem!</p>
-    <p>Das Plugin macht den Handel einfach, übersichtlich und fair. So wird der Servermarkt lebendig, Preise passen sich an und jeder kann am Handel teilnehmen.</p>
-    </div>
-  </div>
-  <div style="height:50px;"></div>
-  <div class="scroll-buttons">
-    <button onclick="scrollToPos(755)">Zurück</button>
-  </div>
-  <div style="height:200px;"></div>
-  <div class="card">
-  <div>
-    <h2><u>Sell + Shop:</u></h2>
-    <p>Mit dem Sell & Shop System können Spieler Items direkt verkaufen oder ausgewählte Items im Shop kaufen.</p>
-    <p>Du hast überschüssige Materialien oder seltene Items? Verkaufe sie über Sell und erhalte sofort Ingame-Geld! Oder suchst du nach spezieller Ausrüstung und besonderen Ressourcen? Im Shop findest du ausgewählte Items, die du direkt erwerben kannst.</p>
-    <p>Das System ist einfach, übersichtlich und fair gestaltet. So können Spieler jederzeit handeln, ihr Inventar sinnvoll nutzen und der Servermarkt bleibt lebendig und stabil.</p>
-    </div>
-  </div>
-  <div style="height:50px;"></div>
-  <div class="scroll-buttons">
-    <button onclick="scrollToPos(755)">Zurück</button>
-  </div>
-  <div style="height:200px;"></div>
-  <div class="card">
-  <div>
-    <h2><u>Home + Warp:</u></h2>
-    <p>Mit dem Home & Warp System können Spieler sich jederzeit zu ihrem Zuhause oder zu speziellen Orten auf dem Server teleportieren.</p>
-    <p>Du willst schnell zu deinem Spawn, zu deinen Crates oder anderen wichtigen Punkten gelangen? Setze Homes oder nutze Warps und spare dir lange Wege!</p>
-    <p>Das System ist einfach zu bedienen, zuverlässig und praktisch. So kannst du dich frei bewegen, deine Lieblingsorte schnell erreichen und das Spielerlebnis noch angenehmer gestalten.</p>
-    </div>
-  </div>
-  <div style="height:50px;"></div>
-  <div class="scroll-buttons">
-    <button onclick="scrollToPos(755)">Zurück</button>
-  </div>
-  <div style="height:180px;"></div>
-  <h1 class="center">Wie man beitritt</h1>
-  <div style="height:20px;"></div>
-  <div class="card">
-  <div>
-    <iframe width="700" height="394" src="YT-Datenschutz-Embedet-Link&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-  </div>
-  <div style="height:50px;"></div>
-  <div class="scroll-buttons">
-    <button onclick="scrollToPos(755)">Zurück</button>
-    <button onclick="scrollToPos(4250)">Text Version</button>
-    <button onclick="scrollToPos(5110)">Unser Team</button>
-  </div>
-  <div style="height:120px;"></div>
-  <h2 style="text-align:center; font-size:40px;">Text Turorial</h2>
-  <div style="height:20px;"></div>
-  <div class="card">
-  <div>
-    <p>Starte <strong>Minecraft Java Edition</strong>.</p>
-    <p>Klicke im Hauptmenü auf <strong>Multiplayer</strong>.</p>
-    <p>Beim ersten Öffnen erscheint eine <strong>Warnmeldung</strong> – bestätige sie mit „Ich verstehe“.</p>
-    <p>Klicke auf <strong>Server hinzufügen</strong>.</p>
-    <p>Trage bei <strong>Server-Name</strong> einen beliebigen Namen ein.
-    <p>Trage bei <strong>Server-Adresse</strong> die IP: <strong>mc.schnur.net</strong> ein.</p>
-    <p>Speichern → Server anklicken → <strong>Beitreten</strong>.</p>
-    <p>Clicke den <strong> NPC</strong> an oder verwende den Befehl <strong>/worlds</strong> um die Welt zu betreten.</p>
-    </div>
-  </div>
-  <div style="height:50px;"></div>
-  <div class="scroll-buttons">
-    <button onclick="scrollToPos(3480)">Zurück</button>
-    <button onclick="scrollToPos(5110)">Unser Team</button>
-  </div>
-  <div style="height:250px;"></div>
-  <h1 class="center">Unser Team</h1>
-  <!-- Die Website wird und SOLL nicht ohne den Credit an den Ersteller laden. -->
-  <div style="height:40px;"></div>
-  <div class="card" style="text-align: center; align-items: center; justify-content: center;">
-  <div>
-    <h2><b>Website Design & Funktion:</b></h2>
-    <div style="display: flex; flex-direction: row; gap:10px; text-align: center; line-height: 0px; font-size: 25px; justify-content: center;" id="web-creator">
-    <!-- Die Website wird und SOLL nicht ohne den Credit an den Ersteller laden. -->
-    <a href="https://guns.lol/timmy_0811" target="_blank" rel="noopener" style="color: inherit;" onmouseover="this.style.color='blue';" onmouseout="this.style.color='inherit';">
-      <img src="timmy.png" style="width:80px;height:80px;">
-      <p>Timmy</p>
-      </a>
-    </div>
-    <div style="height:15px;"></div>
-    <h2><b>Server Owner & Host:</b></h2>
-    <div style="display: flex; flex-direction: row; gap:10px; text-align: center; line-height: 0px; font-size: 25px; justify-content: center;" id="server-owner">
-    <a href="https://guns.lol/schnuridev" target="_blank" rel="noopener" style="color: inherit;" onmouseover="this.style.color='blue';" onmouseout="this.style.color='inherit';">
-      <img src="schnuri.png" style="width:80px;height:80px;">
-      <p>Schnuri</p>
-      </a>
-    </div>
-    <div style="height:15px;"></div>
-    <h2><b>Administratoren:</b></h2>
-    <div style="display: flex; flex-direction: row; gap:10px; text-align: center; line-height: 0px; font-size: 25px; justify-content: center;" id="server-admin">
-    <a href="https://www.twitch.tv/its_karl1" target="_blank" rel="noopener" style="color: inherit;" onmouseover="this.style.color='blue';" onmouseout="this.style.color='inherit';">
-      <img src="itzkarl.png" style="width:80px;height:80px;">
-      <p>Itzkarl</p>
-      </a>
-    </div>
-    <div style="height:15px;"></div>
-    <h2><b>Developer:</b></h2>
-    <div style="display: flex; flex-direction: row; gap:10px; text-align: center; line-height: 0px; font-size: 25px; justify-content: center;" id="server-dev">
-    <a href="https://github.com/Turbo-MC" target="_blank" rel="noopener" style="color: inherit;" onmouseover="this.style.color='blue';" onmouseout="this.style.color='inherit';">
-      <img src="turbo_mc.png" style="width:80px;height:80px;">
-      <p>Turbo MC</p>
-      </a>
-    </div>
-  </div>
-  </div>
-  <div style="height:50px;"></div>
-  <div class="scroll-buttons">
-    <button onclick="scrollToPos(0)">Zum Start</button>
-  </div>
-  <div style="height:50px;"></div>
 
   <script>
-    const elem = document.getElementById("web-creator");
-   //die Website wird und SOLL nicht ohne den Credit an den Ersteller laden.
-    fetch("https://api.mcsrvstat.us/2/mc.schnur.net")
-      .then(r => r.json())
-      .then(d => {
-        const onlineEl = document.getElementById("online");
-        if (d.online) {
-          onlineEl.textContent = "🟢 Server online";
-          onlineEl.className = "online";
-        } else {
-          onlineEl.textContent = "🔴 Server offline";
-          onlineEl.className = "offline";
-        }
-
-        document.getElementById("players").textContent =
-          d.players?.online ?? 0;
-
-        document.getElementById("version").textContent =
-          d.version ?? "unbekannt";
-
-        const motdEl = document.getElementById("motd");
-        motdEl.innerHTML = "";
-        if (d.motd?.html?.length) {
-          d.motd.html.forEach(line => {
-            const div = document.createElement("div");
-            div.innerHTML = line;
-            motdEl.appendChild(div);
-          });
-        } else {
-          motdEl.textContent = "-";
-        }
-      })
-      .catch(() => {
-        document.getElementById("online").textContent =
-          "⚠️ Status nicht abrufbar";
-      });
-
-    //die Website wird und SOLL nicht ohne den Credit an den Ersteller laden.
-    if (!elem) {
-       // Element fehlt → Seite „deaktivieren“
-       document.body.innerHTML = "";
-     }
-
     function scrollToPos(num) {
       window.scrollTo({
         top: num,
