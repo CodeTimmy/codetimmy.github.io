@@ -16,147 +16,235 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      background: #000;
-      font-family: Arial, sans-serif;
-      color: #fff;
-    }
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            text-align: center;
+        }
 
-    .card {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      background: #262626;
-      padding: 16px 20px;
-      max-width: 700px;
-      margin: 0px auto;
-      border-radius: 10px;
-      font-size: 15px;
-      transition: all 0.3s cubic-bezier(.4,0,.2,1);
-    }
+        /* Sterne im Hintergrund */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            top: -10px;
+            animation: fall linear infinite;
+        }
 
-    .card:hover {
-    box-shadow: 0 0 20px #9999aa;
-    background: #2a2a2a;
-    }
+        @keyframes fall {
+            to { transform: translateY(105vh); }
+        }
 
-    .center {
-      text-align: center;
-      margin: 18px auto;
-      font-size: 60px;
-    }
+        /* Die Profil-Card */
+        .profile-card {
+            z-index: 10;
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 50px 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            width: 380px;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            overflow: hidden;
+        }
 
-  .buttons {
-    justify-content: center;
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    margin: 13px auto;
-  }
+        /* Der Leuchteffekt hinter der Card beim Hover */
+        .profile-card::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 68, 68, 0.2); /* Farbe leicht angepasst auf Timmy-Vibe */
+            filter: blur(50px);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+            z-index: -1;
+        }
 
-  .buttons button {
-    width: 150px;
-    height: 48px;
-    border: none;
-    border-radius: 5%;
-    background: #2f2f2f;
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(.4,0,.2,1);
-/* Die Website wird und SOLL nicht ohne den Credit an den Ersteller laden. */
-  }
+        .profile-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 68, 68, 0.4);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            transform: translateY(-5px);
+            backdrop-filter: blur(20px);
+        }
 
-  .buttons button:hover {
-    box-shadow: 0 0 20px #9999aa;
-    background: #353535;
-  }
+        .profile-card:hover::before {
+            width: 300px;
+            height: 300px;
+        }
 
-  body {
-    font-family: "Inter", sans-serif;
-  }
+        /* Avatar */
+        .avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+            transition: all 0.5s ease;
+            object-fit: cover;
+        }
 
-  h1, h2 {
-    font-family: "Orbitron", sans-serif;
-  }
+        .profile-card:hover .avatar {
+            border-color: #ff4444;
+            box-shadow: 0 0 25px rgba(255, 68, 68, 0.6);
+            transform: scale(1.05) rotate(-3deg);
+        }
 
-  .imgcontainer {
-    display: flex;
-    justify-content: center; /* mittig */
-    gap: 50px;               /* Abstand zwischen den Boxen */
-    margin: 40px 0;
-  }
+        /* Name und Badges */
+        h1 {
+            margin: 0;
+            font-size: 32px;
+            letter-spacing: 4px;
+            font-weight: 800;
+            color: rgba(255,255,255,0.2);
+            transition: 0.5s;
+        }
 
-  .imgbox {
-    display: flex;
-    flex-direction: column;
-    background: #262626;
-    align-items: center;
-    border-radius: 10px;
-    padding: 10px;
-    width: 363px;
-    transition: transform 0.2s ease;
-  }
+        .profile-card:hover h1 {
+            color: #fff;
+            text-shadow: 0 0 15px rgba(255,255,255,0.5);
+        }
 
-  .imgbox img {
-    width: 353px;
-    height: 399px;
-    object-fit: cover;
-    margin-bottom: 8px;
-  }
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: 0.5s;
+        }
 
-  .imgbox-text {
-    font-size: 35px;
-    text-align: center;
-  }
+        .profile-card:hover .badges {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-  .imgbox:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 20px #9999aa;
-    background: #353535;
-  }
+        .badge {
+            background: rgba(255, 68, 68, 0.1);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ff4444;
+        }
 
-  .mobile {
-    display: none;
-  }
+        /* Info Box */
+        .info-box {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            opacity: 0;
+            transition: 0.6s;
+        }
 
-/* Mobile: sichtbar */
-@media (max-width: 1100px) {
-  .imgcontainer {
-    flex-direction: column;
-  }
-  .mobile {
-    display: block;
-  }
-}
+        .profile-card:hover .info-box {
+            opacity: 1;
+        }
 
-  </style>
-</head>
-<body>
-<div style="height:30px;"></div>
-<h1 class="center">Timmy</h1>
-<div class="mobile">
-  <p>! Screen to small, enabling Mobile Mode !</p>
-  <p>! Mobile Mode <b>should kinda</b> work, but you could be missing content !</p>
-  <p>! For the best Experience use a Desktop Device !</p>
-</div>
-<p style="text-align:center;font-size:20px;">(Website in progress...)</p>
-<div style="height:100px;"></div>
-<a href="https://timmy-0811.github.io/support">
-  <p style="text-align:center;">Support Me</p>
-</a>
-<div style="height:200px;"></div>
+        .discord-link {
+            display: block;
+            background: #5865F2;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.3);
+        }
 
-  <script>
-    function scrollToPos(num) {
-      window.scrollTo({
-        top: num,
-        behavior: "smooth"
-      });
-    }
-  </script>
+        .discord-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(88, 101, 242, 0.6);
+        }
 
-</body>
-</html>
+        .projects-link {
+            display: block;
+            background: #F4680B;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(245, 121, 39, 0.3);
+        }
+
+        .projects-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(245, 121, 39, 0.6);
+        }
+
+        .footer-text {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 10px;
+            color: rgba(255,255,255,0.2);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .footer-text:hover {
+            color: #fff;
+        }
+    </style>
+<script bis_use="true" type="text/javascript" charset="utf-8" data-bis-config="[&quot;facebook.com/&quot;,&quot;twitter.com/&quot;,&quot;youtube-nocookie.com/embed/&quot;,&quot;//vk.com/&quot;,&quot;//www.vk.com/&quot;,&quot;linkedin.com/&quot;,&quot;//www.linkedin.com/&quot;,&quot;//instagram.com/&quot;,&quot;//www.instagram.com/&quot;,&quot;//www.google.com/recaptcha/api2/&quot;,&quot;//hangouts.google.com/webchat/&quot;,&quot;//www.google.com/calendar/&quot;,&quot;//www.google.com/maps/embed&quot;,&quot;spotify.com/&quot;,&quot;soundcloud.com/&quot;,&quot;//player.vimeo.com/&quot;,&quot;//disqus.com/&quot;,&quot;//tgwidget.com/&quot;,&quot;//js.driftt.com/&quot;,&quot;friends2follow.com&quot;,&quot;/widget&quot;,&quot;login&quot;,&quot;//video.bigmir.net/&quot;,&quot;blogger.com&quot;,&quot;//smartlock.google.com/&quot;,&quot;//keep.google.com/&quot;,&quot;/web.tolstoycomments.com/&quot;,&quot;moz-extension://&quot;,&quot;chrome-extension://&quot;,&quot;/auth/&quot;,&quot;//analytics.google.com/&quot;,&quot;adclarity.com&quot;,&quot;paddle.com/checkout&quot;,&quot;hcaptcha.com&quot;,&quot;recaptcha.net&quot;,&quot;2captcha.com&quot;,&quot;accounts.google.com&quot;,&quot;www.google.com/shopping/customerreviews&quot;,&quot;buy.tinypass.com&quot;,&quot;gstatic.com&quot;,&quot;secureir.ebaystatic.com&quot;,&quot;docs.google.com&quot;,&quot;contacts.google.com&quot;,&quot;github.com&quot;,&quot;mail.google.com&quot;,&quot;chat.google.com&quot;,&quot;audio.xpleer.com&quot;,&quot;keepa.com&quot;,&quot;static.xx.fbcdn.net&quot;,&quot;sas.selleramp.com&quot;,&quot;1plus1.video&quot;,&quot;console.googletagservices.com&quot;,&quot;//lnkd.demdex.net/&quot;,&quot;//radar.cedexis.com/&quot;,&quot;//li.protechts.net/&quot;,&quot;challenges.cloudflare.com/&quot;,&quot;ogs.google.com&quot;,&quot;//www.ukrnafta.com/data/map/&quot;,&quot;//maps.google.com/maps&quot;,&quot;//www.openstreetmap.org/export/embed.html&quot;,&quot;//www.google.com/maps/d/u/3/embed&quot;]" data-dynamic-id="973540f2-c381-4ecc-96f4-8b6c58e45b54" src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/executors/200.js"></script><script bis_use="true" type="text/javascript" charset="utf-8" nonce="" data-dynamic-id="973540f2-c381-4ecc-96f4-8b6c58e45b54" src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/executors/101.js"></script></head>
+<body __processed_fc1104da-bc8c-42fe-b31c-a131ba574c3d__="true" bis_register="W3sibWFzdGVyIjp0cnVlLCJleHRlbnNpb25JZCI6ImVwcGlvY2VtaG1ubGJoanBsY2drb2ZjaWllZ29tY29uIiwiYWRibG9ja2VyU3RhdHVzIjp7IkRJU1BMQVkiOiJlbmFibGVkIiwiRkFDRUJPT0siOiJlbmFibGVkIiwiVFdJVFRFUiI6ImVuYWJsZWQiLCJSRURESVQiOiJlbmFibGVkIiwiUElOVEVSRVNUIjoiZW5hYmxlZCIsIklOU1RBR1JBTSI6ImVuYWJsZWQiLCJUSUtUT0siOiJkaXNhYmxlZCIsIkxJTktFRElOIjoiZW5hYmxlZCIsIkNPTkZJRyI6ImRpc2FibGVkIn0sInZlcnNpb24iOiIyLjAuNDUiLCJzY29yZSI6MjAwNDUwfV0=">
+
+    <div class="profile-card" bis_skin_checked="1">
+        <img src="https://cdn.discordapp.com/avatars/1358450814980460780/15fccf39f751c9643780c18d30dac90a.webp" alt="timmy" class="avatar">
+        
+        <h1>Timmy</h1>
+        
+        <div class="badges" bis_skin_checked="1">
+            <span class="badge">Web Designer</span>
+            <span class="badge">Python & Skript</span>
+            <span class="badge">Minecraft</span>
+        </div>
+
+        <div class="info-box" bis_skin_checked="1">
+            <p style="color: #ccc; font-size: 14px; margin-bottom: 20px;">
+                "I don't delete pages, I just hide them very well."
+            </p>
+            <a href="https://discord.gg/XwzCF7B9dP" target="_blank" class="discord-link">
+                Discord
+            </a>
+            <br>
+	    <a href="https://timmy-0811.github.io/projects" class="projects-link">Projects</a>
+        </div>
+    </div>
+
+    <script>
+        // Sterne regnen lassen
+        for (let i = 0; i < 120; i++) {
+            let star = document.createElement('div');
+            star.className = 'star';
+            let size = Math.random() * 3 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.animationDuration = Math.random() * 4 + 2 + 's';
+            star.style.animationDelay = '-' + Math.random() * 10 + 's';
+            document.body.appendChild(star);
+        }
+    </script><div class="star" style="width: 1.57919px; height: 1.57919px; left: 2.05953vw; animation-duration: 4.71116s; animation-delay: -2.39771s;" bis_skin_checked="1"></div><div class="star" style="width: 2.3509px; height: 2.3509px; left: 27.493vw; animation-duration: 2.3091s; animation-delay: -2.28927s;" bis_skin_checked="1"></div><div class="star" style="width: 1.47131px; height: 1.47131px; left: 79.6262vw; animation-duration: 2.92805s; animation-delay: -0.723143s;" bis_skin_checked="1"></div><div class="star" style="width: 0.349418px; height: 0.349418px; left: 41.8358vw; animation-duration: 3.18993s; animation-delay: -2.23781s;" bis_skin_checked="1"></div><div class="star" style="width: 1.20169px; height: 1.20169px; left: 53.2179vw; animation-duration: 2.02404s; animation-delay: -4.85921s;" bis_skin_checked="1"></div><div class="star" style="width: 0.503675px; height: 0.503675px; left: 24.714vw; animation-duration: 4.8323s; animation-delay: -2.12655s;" bis_skin_checked="1"></div><div class="star" style="width: 2.22956px; height: 2.22956px; left: 80.4064vw; animation-duration: 3.91449s; animation-delay: -4.44872s;" bis_skin_checked="1"></div><div class="star" style="width: 2.8494px; height: 2.8494px; left: 25.9848vw; animation-duration: 3.97241s; animation-delay: -6.31761s;" bis_skin_checked="1"></div><div class="star" style="width: 2.06688px; height: 2.06688px; left: 74.2917vw; animation-duration: 3.52833s; animation-delay: -7.32329s;" bis_skin_checked="1"></div><div class="star" style="width: 1.90561px; height: 1.90561px; left: 23.9293vw; animation-duration: 4.67112s; animation-delay: -3.16798s;" bis_skin_checked="1"></div><div class="star" style="width: 1.76908px; height: 1.76908px; left: 66.7524vw; animation-duration: 4.80222s; animation-delay: -7.54045s;" bis_skin_checked="1"></div><div class="star" style="width: 0.599724px; height: 0.599724px; left: 2.50598vw; animation-duration: 4.52481s; animation-delay: -7.88645s;" bis_skin_checked="1"></div><div class="star" style="width: 2.42159px; height: 2.42159px; left: 63.7045vw; animation-duration: 2.86538s; animation-delay: -8.60236s;" bis_skin_checked="1"></div><div class="star" style="width: 1.61817px; height: 1.61817px; left: 59.1465vw; animation-duration: 5.63563s; animation-delay: -2.1992s;" bis_skin_checked="1"></div><div class="star" style="width: 0.792281px; height: 0.792281px; left: 1.87708vw; animation-duration: 2.39818s; animation-delay: -1.87245s;" bis_skin_checked="1"></div><div class="star" style="width: 0.962615px; height: 0.962615px; left: 85.1959vw; animation-duration: 4.16625s; animation-delay: -2.67256s;" bis_skin_checked="1"></div><div class="star" style="width: 0.78567px; height: 0.78567px; left: 98.3337vw; animation-duration: 3.12529s; animation-delay: -1.78929s;" bis_skin_checked="1"></div><div class="star" style="width: 0.570733px; height: 0.570733px; left: 88.0978vw; animation-duration: 4.08542s; animation-delay: -8.96355s;" bis_skin_checked="1"></div><div class="star" style="width: 2.50352px; height: 2.50352px; left: 44.3925vw; animation-duration: 5.89794s; animation-delay: -6.48839s;" bis_skin_checked="1"></div><div class="star" style="width: 2.39893px; height: 2.39893px; left: 72.5844vw; animation-duration: 2.48243s; animation-delay: -2.95221s;" bis_skin_checked="1"></div><div class="star" style="width: 0.008115px; height: 0.008115px; left: 88.1333vw; animation-duration: 2.84467s; animation-delay: -3.83758s;" bis_skin_checked="1"></div><div class="star" style="width: 2.91039px; height: 2.91039px; left: 57.4983vw; animation-duration: 4.14446s; animation-delay: -0.063033s;" bis_skin_checked="1"></div><div class="star" style="width: 1.66858px; height: 1.66858px; left: 17.5187vw; animation-duration: 5.6753s; animation-delay: -0.591028s;" bis_skin_checked="1"></div><div class="star" style="width: 1.46228px; height: 1.46228px; left: 86.9075vw; animation-duration: 5.91733s; animation-delay: -3.94435s;" bis_skin_checked="1"></div><div class="star" style="width: 2.05959px; height: 2.05959px; left: 58.8931vw; animation-duration: 3.35978s; animation-delay: -5.21953s;" bis_skin_checked="1"></div><div class="star" style="width: 0.192763px; height: 0.192763px; left: 18.3234vw; animation-duration: 2.4604s; animation-delay: -6.25181s;" bis_skin_checked="1"></div><div class="star" style="width: 2.86525px; height: 2.86525px; left: 18.6862vw; animation-duration: 2.017s; animation-delay: -2.8964s;" bis_skin_checked="1"></div><div class="star" style="width: 0.89916px; height: 0.89916px; left: 81.8961vw; animation-duration: 3.22863s; animation-delay: -3.31619s;" bis_skin_checked="1"></div><div class="star" style="width: 1.75241px; height: 1.75241px; left: 77.8753vw; animation-duration: 2.00646s; animation-delay: -5.46009s;" bis_skin_checked="1"></div><div class="star" style="width: 2.4678px; height: 2.4678px; left: 90.1983vw; animation-duration: 5.89079s; animation-delay: -3.16127s;" bis_skin_checked="1"></div><div class="star" style="width: 0.535656px; height: 0.535656px; left: 21.5451vw; animation-duration: 3.74006s; animation-delay: -6.19997s;" bis_skin_checked="1"></div><div class="star" style="width: 2.38863px; height: 2.38863px; left: 10.4158vw; animation-duration: 3.12615s; animation-delay: -7.41525s;" bis_skin_checked="1"></div><div class="star" style="width: 2.73157px; height: 2.73157px; left: 14.3604vw; animation-duration: 2.04645s; animation-delay: -9.80682s;" bis_skin_checked="1"></div><div class="star" style="width: 0.923385px; height: 0.923385px; left: 83.7968vw; animation-duration: 3.32322s; animation-delay: -8.01377s;" bis_skin_checked="1"></div><div class="star" style="width: 2.08889px; height: 2.08889px; left: 47.5645vw; animation-duration: 5.82502s; animation-delay: -5.1494s;" bis_skin_checked="1"></div><div class="star" style="width: 0.982153px; height: 0.982153px; left: 23.8731vw; animation-duration: 3.39698s; animation-delay: -6.93711s;" bis_skin_checked="1"></div><div class="star" style="width: 2.90288px; height: 2.90288px; left: 1.64448vw; animation-duration: 5.49538s; animation-delay: -0.392639s;" bis_skin_checked="1"></div><div class="star" style="width: 2.62744px; height: 2.62744px; left: 78.2371vw; animation-duration: 2.10488s; animation-delay: -7.07769s;" bis_skin_checked="1"></div><div class="star" style="width: 1.76486px; height: 1.76486px; left: 79.9151vw; animation-duration: 3.53637s; animation-delay: -4.88334s;" bis_skin_checked="1"></div><div class="star" style="width: 0.689852px; height: 0.689852px; left: 21.7111vw; animation-duration: 5.92692s; animation-delay: -6.85531s;" bis_skin_checked="1"></div><div class="star" style="width: 2.69407px; height: 2.69407px; left: 91.3038vw; animation-duration: 4.10425s; animation-delay: -3.67568s;" bis_skin_checked="1"></div><div class="star" style="width: 1.26261px; height: 1.26261px; left: 84.1779vw; animation-duration: 4.30965s; animation-delay: -9.38146s;" bis_skin_checked="1"></div><div class="star" style="width: 0.419036px; height: 0.419036px; left: 8.15846vw; animation-duration: 3.07444s; animation-delay: -8.85222s;" bis_skin_checked="1"></div><div class="star" style="width: 1.65615px; height: 1.65615px; left: 79.8016vw; animation-duration: 4.08911s; animation-delay: -9.79205s;" bis_skin_checked="1"></div><div class="star" style="width: 1.61873px; height: 1.61873px; left: 71.5958vw; animation-duration: 2.0951s; animation-delay: -3.6684s;" bis_skin_checked="1"></div><div class="star" style="width: 1.97427px; height: 1.97427px; left: 54.2815vw; animation-duration: 4.21182s; animation-delay: -5.19622s;" bis_skin_checked="1"></div><div class="star" style="width: 2.01302px; height: 2.01302px; left: 45.5793vw; animation-duration: 3.48797s; animation-delay: -9.3323s;" bis_skin_checked="1"></div><div class="star" style="width: 2.01037px; height: 2.01037px; left: 45.9959vw; animation-duration: 5.11668s; animation-delay: -5.57626s;" bis_skin_checked="1"></div><div class="star" style="width: 2.58177px; height: 2.58177px; left: 64.9339vw; animation-duration: 5.35894s; animation-delay: -6.35549s;" bis_skin_checked="1"></div><div class="star" style="width: 0.557657px; height: 0.557657px; left: 84.5479vw; animation-duration: 5.04652s; animation-delay: -0.358817s;" bis_skin_checked="1"></div><div class="star" style="width: 2.76326px; height: 2.76326px; left: 32.5471vw; animation-duration: 4.57679s; animation-delay: -9.30472s;" bis_skin_checked="1"></div><div class="star" style="width: 0.9081px; height: 0.9081px; left: 53.9035vw; animation-duration: 5.79241s; animation-delay: -5.59586s;" bis_skin_checked="1"></div><div class="star" style="width: 1.40562px; height: 1.40562px; left: 39.0879vw; animation-duration: 2.75339s; animation-delay: -0.869838s;" bis_skin_checked="1"></div><div class="star" style="width: 0.489511px; height: 0.489511px; left: 90.63vw; animation-duration: 2.81621s; animation-delay: -0.575058s;" bis_skin_checked="1"></div><div class="star" style="width: 1.27594px; height: 1.27594px; left: 1.55028vw; animation-duration: 3.27663s; animation-delay: -5.97362s;" bis_skin_checked="1"></div><div class="star" style="width: 1.18357px; height: 1.18357px; left: 57.8973vw; animation-duration: 5.68074s; animation-delay: -7.28596s;" bis_skin_checked="1"></div><div class="star" style="width: 0.523379px; height: 0.523379px; left: 29.5848vw; animation-duration: 3.53521s; animation-delay: -3.86683s;" bis_skin_checked="1"></div><div class="star" style="width: 2.59456px; height: 2.59456px; left: 50.2333vw; animation-duration: 4.07936s; animation-delay: -3.72773s;" bis_skin_checked="1"></div><div class="star" style="width: 1.93119px; height: 1.93119px; left: 21.4668vw; animation-duration: 2.96173s; animation-delay: -9.74466s;" bis_skin_checked="1"></div><div class="star" style="width: 0.612504px; height: 0.612504px; left: 89.7554vw; animation-duration: 3.36906s; animation-delay: -8.30186s;" bis_skin_checked="1"></div><div class="star" style="width: 2.40515px; height: 2.40515px; left: 52.4159vw; animation-duration: 3.57068s; animation-delay: -5.56678s;" bis_skin_checked="1"></div><div class="star" style="width: 1.47995px; height: 1.47995px; left: 90.0241vw; animation-duration: 5.81132s; animation-delay: -9.24427s;" bis_skin_checked="1"></div><div class="star" style="width: 2.34086px; height: 2.34086px; left: 61.2652vw; animation-duration: 5.34431s; animation-delay: -4.10516s;" bis_skin_checked="1"></div><div class="star" style="width: 0.279105px; height: 0.279105px; left: 63.353vw; animation-duration: 5.99276s; animation-delay: -3.8196s;" bis_skin_checked="1"></div><div class="star" style="width: 2.78728px; height: 2.78728px; left: 93.246vw; animation-duration: 5.77827s; animation-delay: -9.60845s;" bis_skin_checked="1"></div><div class="star" style="width: 2.67284px; height: 2.67284px; left: 64.3084vw; animation-duration: 3.87514s; animation-delay: -6.28647s;" bis_skin_checked="1"></div><div class="star" style="width: 1.46795px; height: 1.46795px; left: 61.6929vw; animation-duration: 2.38576s; animation-delay: -9.53655s;" bis_skin_checked="1"></div><div class="star" style="width: 1.13575px; height: 1.13575px; left: 45.4615vw; animation-duration: 2.8702s; animation-delay: -8.88136s;" bis_skin_checked="1"></div><div class="star" style="width: 0.960252px; height: 0.960252px; left: 13.7117vw; animation-duration: 3.8097s; animation-delay: -6.39482s;" bis_skin_checked="1"></div><div class="star" style="width: 1.08345px; height: 1.08345px; left: 86.0641vw; animation-duration: 2.6698s; animation-delay: -2.00794s;" bis_skin_checked="1"></div><div class="star" style="width: 0.160911px; height: 0.160911px; left: 62.7325vw; animation-duration: 4.48626s; animation-delay: -0.0270236s;" bis_skin_checked="1"></div><div class="star" style="width: 1.55911px; height: 1.55911px; left: 87.1824vw; animation-duration: 5.66858s; animation-delay: -7.37892s;" bis_skin_checked="1"></div><div class="star" style="width: 0.784768px; height: 0.784768px; left: 4.42656vw; animation-duration: 5.69327s; animation-delay: -9.29107s;" bis_skin_checked="1"></div><div class="star" style="width: 1.29966px; height: 1.29966px; left: 27.3183vw; animation-duration: 3.7837s; animation-delay: -4.87734s;" bis_skin_checked="1"></div><div class="star" style="width: 0.681915px; height: 0.681915px; left: 35.5408vw; animation-duration: 5.69956s; animation-delay: -4.32591s;" bis_skin_checked="1"></div><div class="star" style="width: 0.581949px; height: 0.581949px; left: 15.1874vw; animation-duration: 2.47602s; animation-delay: -1.52795s;" bis_skin_checked="1"></div><div class="star" style="width: 2.85522px; height: 2.85522px; left: 22.9506vw; animation-duration: 2.85634s; animation-delay: -9.42932s;" bis_skin_checked="1"></div><div class="star" style="width: 2.11735px; height: 2.11735px; left: 65.1423vw; animation-duration: 5.21782s; animation-delay: -3.72212s;" bis_skin_checked="1"></div><div class="star" style="width: 0.691376px; height: 0.691376px; left: 28.2378vw; animation-duration: 4.15097s; animation-delay: -8.72771s;" bis_skin_checked="1"></div><div class="star" style="width: 0.354694px; height: 0.354694px; left: 62.9458vw; animation-duration: 4.68734s; animation-delay: -8.49026s;" bis_skin_checked="1"></div><div class="star" style="width: 1.75958px; height: 1.75958px; left: 36.2896vw; animation-duration: 3.3728s; animation-delay: -5.87366s;" bis_skin_checked="1"></div><div class="star" style="width: 0.181869px; height: 0.181869px; left: 47.8983vw; animation-duration: 5.47491s; animation-delay: -3.98774s;" bis_skin_checked="1"></div><div class="star" style="width: 1.25453px; height: 1.25453px; left: 72.766vw; animation-duration: 3.8766s; animation-delay: -3.09634s;" bis_skin_checked="1"></div><div class="star" style="width: 0.0762345px; height: 0.0762345px; left: 22.8212vw; animation-duration: 4.53424s; animation-delay: -6.79689s;" bis_skin_checked="1"></div><div class="star" style="width: 0.158913px; height: 0.158913px; left: 80.9297vw; animation-duration: 4.43109s; animation-delay: -3.63332s;" bis_skin_checked="1"></div><div class="star" style="width: 0.114636px; height: 0.114636px; left: 18.5826vw; animation-duration: 3.76552s; animation-delay: -1.04506s;" bis_skin_checked="1"></div><div class="star" style="width: 0.55522px; height: 0.55522px; left: 2.45095vw; animation-duration: 4.69874s; animation-delay: -4.95357s;" bis_skin_checked="1"></div><div class="star" style="width: 0.457419px; height: 0.457419px; left: 62.5786vw; animation-duration: 3.74751s; animation-delay: -3.29944s;" bis_skin_checked="1"></div><div class="star" style="width: 0.372033px; height: 0.372033px; left: 7.16211vw; animation-duration: 5.82386s; animation-delay: -1.87666s;" bis_skin_checked="1"></div><div class="star" style="width: 0.725667px; height: 0.725667px; left: 81.6725vw; animation-duration: 4.21787s; animation-delay: -2.92334s;" bis_skin_checked="1"></div><div class="star" style="width: 2.86411px; height: 2.86411px; left: 66.3274vw; animation-duration: 3.77879s; animation-delay: -1.93772s;" bis_skin_checked="1"></div><div class="star" style="width: 0.791304px; height: 0.791304px; left: 54.6964vw; animation-duration: 4.08295s; animation-delay: -3.77127s;" bis_skin_checked="1"></div><div class="star" style="width: 0.546565px; height: 0.546565px; left: 47.2685vw; animation-duration: 5.92585s; animation-delay: -2.57707s;" bis_skin_checked="1"></div><div class="star" style="width: 0.36131px; height: 0.36131px; left: 10.9409vw; animation-duration: 5.42494s; animation-delay: -9.53138s;" bis_skin_checked="1"></div><div class="star" style="width: 0.801282px; height: 0.801282px; left: 3.45735vw; animation-duration: 3.25388s; animation-delay: -8.46858s;" bis_skin_checked="1"></div><div class="star" style="width: 2.2081px; height: 2.2081px; left: 9.65897vw; animation-duration: 5.37951s; animation-delay: -8.24509s;" bis_skin_checked="1"></div><div class="star" style="width: 0.15862px; height: 0.15862px; left: 2.69666vw; animation-duration: 2.35441s; animation-delay: -5.9293s;" bis_skin_checked="1"></div><div class="star" style="width: 2.30585px; height: 2.30585px; left: 70.7486vw; animation-duration: 2.02319s; animation-delay: -4.57868s;" bis_skin_checked="1"></div><div class="star" style="width: 0.565575px; height: 0.565575px; left: 28.821vw; animation-duration: 5.79019s; animation-delay: -4.08941s;" bis_skin_checked="1"></div><div class="star" style="width: 0.257322px; height: 0.257322px; left: 75.5562vw; animation-duration: 5.65725s; animation-delay: -9.23533s;" bis_skin_checked="1"></div><div class="star" style="width: 0.383278px; height: 0.383278px; left: 38.461vw; animation-duration: 2.99024s; animation-delay: -9.08858s;" bis_skin_checked="1"></div><div class="star" style="width: 2.9425px; height: 2.9425px; left: 56.8685vw; animation-duration: 5.949s; animation-delay: -3.52199s;" bis_skin_checked="1"></div><div class="star" style="width: 1.89806px; height: 1.89806px; left: 40.5332vw; animation-duration: 3.63473s; animation-delay: -9.11508s;" bis_skin_checked="1"></div><div class="star" style="width: 0.0330321px; height: 0.0330321px; left: 99.5885vw; animation-duration: 5.1496s; animation-delay: -1.5476s;" bis_skin_checked="1"></div><div class="star" style="width: 2.24591px; height: 2.24591px; left: 77.0416vw; animation-duration: 5.48741s; animation-delay: -9.51331s;" bis_skin_checked="1"></div><div class="star" style="width: 2.3406px; height: 2.3406px; left: 38.0601vw; animation-duration: 4.41815s; animation-delay: -8.38453s;" bis_skin_checked="1"></div><div class="star" style="width: 1.72074px; height: 1.72074px; left: 9.97994vw; animation-duration: 3.12474s; animation-delay: -7.42379s;" bis_skin_checked="1"></div><div class="star" style="width: 0.725587px; height: 0.725587px; left: 41.7645vw; animation-duration: 3.23884s; animation-delay: -0.888864s;" bis_skin_checked="1"></div><div class="star" style="width: 2.33595px; height: 2.33595px; left: 5.27415vw; animation-duration: 5.13141s; animation-delay: -5.96577s;" bis_skin_checked="1"></div><div class="star" style="width: 1.82466px; height: 1.82466px; left: 9.59383vw; animation-duration: 5.97772s; animation-delay: -3.8908s;" bis_skin_checked="1"></div><div class="star" style="width: 1.72865px; height: 1.72865px; left: 15.5329vw; animation-duration: 5.28502s; animation-delay: -9.353s;" bis_skin_checked="1"></div><div class="star" style="width: 2.15073px; height: 2.15073px; left: 8.60308vw; animation-duration: 2.54294s; animation-delay: -1.7748s;" bis_skin_checked="1"></div><div class="star" style="width: 1.66786px; height: 1.66786px; left: 34.0864vw; animation-duration: 5.86552s; animation-delay: -6.2417s;" bis_skin_checked="1"></div><div class="star" style="width: 1.55795px; height: 1.55795px; left: 89.3866vw; animation-duration: 3.98282s; animation-delay: -3.63176s;" bis_skin_checked="1"></div><div class="star" style="width: 1.10317px; height: 1.10317px; left: 90.3935vw; animation-duration: 4.65675s; animation-delay: -8.48598s;" bis_skin_checked="1"></div><div class="star" style="width: 1.77314px; height: 1.77314px; left: 48.0097vw; animation-duration: 5.49913s; animation-delay: -6.5083s;" bis_skin_checked="1"></div><div class="star" style="width: 2.1849px; height: 2.1849px; left: 72.2631vw; animation-duration: 4.49616s; animation-delay: -2.16842s;" bis_skin_checked="1"></div><div class="star" style="width: 2.60801px; height: 2.60801px; left: 50.5368vw; animation-duration: 3.87425s; animation-delay: -0.397385s;" bis_skin_checked="1"></div><div class="star" style="width: 2.87936px; height: 2.87936px; left: 75.2971vw; animation-duration: 2.74939s; animation-delay: -4.67908s;" bis_skin_checked="1"></div><div class="star" style="width: 0.93463px; height: 0.93463px; left: 31.0428vw; animation-duration: 3.45387s; animation-delay: -4.68184s;" bis_skin_checked="1"></div>
+
+</body></html>
