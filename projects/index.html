@@ -6,12 +6,25 @@
 <style>
   body {
     font-family: Arial, sans-serif;
-    background: #0f172a;
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
     color: white;
     margin: 0;
     padding: 20px;
 }
 
+/* Sterne im Hintergrund */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    top: -10px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to { transform: translateY(105vh); }
+}
+  
 h1 {
     text-align: center;
 }
@@ -94,6 +107,17 @@ h1 {
 </div>
 </body>
 <script>
-  
+// Sterne regnen lassen
+for (let i = 0; i < 120; i++) {
+    let star = document.createElement('div');
+    star.className = 'star';
+    let size = Math.random() * 3 + 'px';
+    star.style.width = size;
+    star.style.height = size;
+    star.style.left = Math.random() * 100 + 'vw';
+    star.style.animationDuration = Math.random() * 4 + 2 + 's';
+    star.style.animationDelay = '-' + Math.random() * 10 + 's';
+    document.body.appendChild(star);
+}
 </script>
 </html>
