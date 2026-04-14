@@ -8,7 +8,7 @@
 <style>
 body {
     font-family: Arial, sans-serif;
-    background: #0f172a;
+    background: #090A0F;
     color: white;
     margin: 0;
     padding: 20px;
@@ -18,11 +18,24 @@ h1 {
     text-align: center;
 }
 
+/* Sterne im Hintergrund */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    top: -10px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to { transform: translateY(105vh); }
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 60px;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 .card {
@@ -65,7 +78,7 @@ h1 {
 
 <body>
 
-<h1>🚀 Meine Projekte</h1>
+<h1>Meine Projekte</h1>
 
 <div class="grid">
 
@@ -112,6 +125,19 @@ h1 {
     </div>
 
 </div>
-
+<script>
+// Sterne regnen lassen
+for (let i = 0; i < 120; i++) {
+    let star = document.createElement('div');
+    star.className = 'star';
+    let size = Math.random() * 3 + 'px';
+    star.style.width = size;
+    star.style.height = size;
+    star.style.left = Math.random() * 100 + 'vw';
+    star.style.animationDuration = Math.random() * 4 + 2 + 's';
+    star.style.animationDelay = '-' + Math.random() * 10 + 's';
+    document.body.appendChild(star);
+}
+</script>
 </body>
 </html>
