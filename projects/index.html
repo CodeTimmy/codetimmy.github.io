@@ -52,24 +52,22 @@
                 linear-gradient(135deg, #040612, #0b1024);
         }
 
-        .stars-bg {
-            position: fixed;
-            inset: 0;
-            background-image: radial-gradient(white 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: .2;
-            animation: moveStars 60s linear infinite;
-            pointer-events: none;
-        }
+	.stars-bg{
+	    position:fixed;
+	    inset:0;
+	    background-image:radial-gradient(white 1px, transparent 1px);
+	    background-size:50px 50px;
+	    opacity:.2;
+	    offset-path: circle(25px);
+	    offset-rotate: 0deg; 
+	    animation:moveStars 30s ease-in-out infinite;
+	}
 
-        @keyframes moveStars {
-            from {
-                transform: translateY(0);
-            }
-            to {
-                transform: translateY(50px);
-            }
-        }
+	@keyframes moveStars{
+	    0% {transform: translate(-40px, -15px);}
+	    50% {transform: translate(-5px, 10px);}
+	    100% {transform: translate(-40px, 35px);}
+	}
 
         /* ---------- Back‑Button (oben links) ---------- */
         .back-button {
@@ -244,6 +242,11 @@
                 font-size: 1.3rem;
             }
         }
+	.scroll {
+	    font-size:14px;
+	    color:rgba(255,255,255,.25);
+	    display: block;
+	}
     </style>
 </head>
 <body>
@@ -252,7 +255,7 @@
     <div class="stars-bg"></div>
 
     <!-- 🔙 Back‑Button (oben links) -->
-    <a href="https://codetimmy.github.io/" class="back-button" title="Zurück zur Startseite">◀</a>
+    <a href="https://codetimmy.github.io/" class="back-button" title="Zurück zur Startseite">◀-</a>
 
     <!-- Hauptcontainer -->
     <div class="projects-wrapper">
@@ -302,6 +305,9 @@
             </a> -->
         </div>
     </div>
+    <div class="scroll" id="scroll">
+        Scroll up to go back
+    </div>
 
     <!-- Easter‑Egg (Text) -->
     <div class="easter-egg">yes, this was made with chatgpt</div>
@@ -327,6 +333,36 @@
             document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
         });
     </script>
+<script>
+let weitergeleitet = false;
+let scrolldist = 0;
+
+function leiteWeiter() {
+    if (weitergeleitet) return;
+    weitergeleitet = true;
+    window.location.href = 'https://codetimmy.github.io/';
+}
+
+// Mausrad
+window.addEventListener('wheel', function(e) {
+    if (scrolldist++ < 3 && e.deltaY < 0) {
+	document.getElementById("scroll").textContent = "Scroll up further to go back";
+	return;
+}
+    if (e.deltaY < 0) leiteWeiter();
+});
+// 2. Touch (mobil)
+let startY = 0;
+window.addEventListener('touchstart', function(e) {
+    startY = e.touches[0].clientY;
+});
+window.addEventListener('touchmove', function(e) {
+    if (startY - e.touches[0].clientY < 10) {
+	document.getElementById("scroll").textContent = "Scroll up further to go back";
+}
+    if (startY - e.touches[0].clientY < 60) leiteWeiter();
+});
+</script>
 
 </body>
 </html>

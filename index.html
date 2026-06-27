@@ -53,12 +53,15 @@ body{
     background-image:radial-gradient(white 1px, transparent 1px);
     background-size:50px 50px;
     opacity:.2;
-    animation:moveStars 60s linear infinite;
+    offset-path: circle(25px);
+    offset-rotate: 0deg; 
+    animation:moveStars 30s ease-in-out infinite;
 }
 
 @keyframes moveStars{
-    from{transform:translateY(0);}
-    to{transform:translateY(50px);}
+    0% {transform: translate(-40px, -15px);}
+    50% {transform: translate(-5px, 10px);}
+    100% {transform: translate(-40px, 35px);}
 }
 
 .card{
@@ -314,7 +317,7 @@ body{
     vertical-align: top;
     line-height: 1;
     position: relative;
-    top: -6px;
+    top: -5px;
     display: block;
 }
 
@@ -324,11 +327,58 @@ body{
     display: block;
 }
 
+.projects-button {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: rgba(255, 255, 255, .06);
+    backdrop-filter: blur(20px);
+
+    color: white;
+    font-size: 1.6rem;
+    text-decoration: none;
+    line-height: 1;
+
+    transition: .3s ease;
+    box-shadow: 0 0 25px rgba(0, 0, 0, .3), 0 0 40px rgba(102, 0, 255, .10);
+}
+
+.projects-button:hover {
+    transform: scale(1.1) translateY(-2px);
+    border-color: rgba(130, 170, 255, .4);
+    box-shadow: 0 0 40px rgba(0, 0, 0, .45), 0 0 70px rgba(102, 0, 255, .25);
+    background: rgba(255, 255, 255, .12);
+}
+
 </style>
+<script>
+function checkScreen() {
+    if ((window.innerWidth < 610 || window.innerHeight < 785) && !weitergeleitet) {
+        weitergeleitet = true;
+        window.location.href = "mobile";
+    }
+}
+// Beim Laden prüfen
+window.addEventListener('load', checkScreen);
+// Bei jeder Größenänderung prüfen
+window.addEventListener('resize', checkScreen);
+</script>
 </head>
 <body>
 
 <div class="stars"></div>
+
+<a href="projects" class="projects-button" title="Projects">-▶</a>
 
 <div class="card">
 
@@ -342,7 +392,7 @@ body{
     <h1>
 	𝕋𝕚𝕞𝕞𝕪
     </h1>
-    <span class="small">@CodeTimmy</span>
+    <span class="small">CodeTimmy | EinTimmy | code.timmy | Just Timmy</span>
 
     <p class="subtitle">
         Python Developer or something like that?
@@ -382,7 +432,7 @@ body{
 
 </div>
 <div class="scroll" id="scroll">
-    Scroll to see Projects
+    Scroll down to see Projects
 </div>
 <audio id="bgmusic">
     <source src="music/Tobu - If I Disappear (ft. Tom Mårtensson).mp3" type="audio/mpeg">
@@ -391,6 +441,7 @@ body{
     yes, this was made with chatgpt
 </div>
 
+<script src="music/.list.js"></script>
 <script>
 const music = document.getElementById("bgmusic");
 
@@ -399,109 +450,6 @@ const skipBtn = document.getElementById("skip-btn");
 
 const songTitle = document.getElementById("song-title");
 const songArtist = document.getElementById("song-artist");
-
-const playlist = [
-    {
-        title: "In My Head (feat. Britt Lari)",
-        artist: "Arcando",
-        file: "music/Arcando - In My Head (feat. Britt Lari).mp3"
-    },
-    {
-        title: "Everything",
-        artist: "Diamond Eyes",
-        file: "music/Diamond Eyes - Everything.mp3"
-    },
-    {
-        title: "Flutter",
-        artist: "Diamond Eyes",
-        file: "music/Diamond Eyes - Flutter.mp3"
-    },
-    {
-        title: "On My Own (feat. Karra)",
-        artist: "Far Out",
-        file: "music/Far Out - On My Own (feat. Karra).mp3"
-    },
-    {
-        title: "Dead of Night (VIP) [NCS Release]",
-        artist: "if found",
-        file: "music/if found - Dead of Night (VIP) [NCS Release].mp3"
-    },
-    {
-        title: "Moments",
-        artist: "Lost Identities x Robbie Rosen",
-        file: "music/Lost Identities x Robbie Rosen - Moments.mp3"
-    },
-    {
-        title: "If I Disappear (ft. Tom Mårtensson)",
-        artist: "Tobu",
-        file: "music/Tobu - If I Disappear (ft. Tom Mårtensson).mp3"
-    },
-    {
-        title: "Live A Lie (ft. Andreas Stone)",
-        artist: "Rival x Egzod",
-        file: "music/Rival x Egzod - Live A Lie (ft. Andreas Stone).mp3"
-    },
-    {
-        title: "Escape With Me (feat. Charlotte Haining)",
-        artist: "Halcyon & Starlyte",
-        file: "music/Halcyon & Starlyte - Escape With Me (feat. Charlotte Haining).mp3"
-    },
-    {
-        title: "I Know",
-        artist: "3rd Prototype",
-        file: "music/3rd Prototype - I Know.mp3"
-    },
-    {
-        title: "Freedom",
-        artist: "32Stitches & CHENDA, Harley Bird",
-        file: "music/32Stitches & CHENDA, Harley Bird - Freedom.mp3"
-    },
-    {
-        title: "See The Sun",
-        artist: "Abstrakt, weloveyouspydee",
-        file: "music/Abstrakt, weloveyouspydee - See The Sun.mp3"
-    },
-    {
-        title: "Where We Started (feat. Jex)",
-        artist: "Lost Sky",
-        file: "music/Lost Sky - Where We Started (feat. Jex).mp3"
-    },
-    {
-        title: "Somebody Like Me (feat. Halvorsen)",
-        artist: "JJD & Division One",
-        file: "music/JJD & Division One - Somebody Like Me (feat. Halvorsen).mp3"
-    },
-    {
-        title: "Find A Way (feat. Cammie Robinson)",
-        artist: "T & Sugah x NCT",
-        file: "music/T & Sugah x NCT - Find A Way (feat. Cammie Robinson).mp3"
-    },
-    {
-        title: "Unbreakable",
-        artist: "Lost Sky x ANGELPLAYA x Chris Linton",
-        file: "music/Lost Sky x ANGELPLAYA x Chris Linton - Unbreakable.mp3"
-    },
-    {
-        title: "Can't Heal You",
-        artist: "Bad Computer",
-        file: "music/Bad Computer - Can't Heal You.mp3"
-    },
-    {
-        title: "Warzone (feat. Zaug)",
-        artist: "Clarx",
-        file: "music/Clarx - Warzone (feat. Zaug).mp3"
-    },
-    {
-        title: "Deep End",
-        artist: "FLOTE, Fendy Cisneros, Luxtides",
-        file: "music/FLOTE, Fendy Cisneros, Luxtides - Deep End.mp3"
-    },
-    {
-        title: "Hero's Ending",
-        artist: "Lost Sky x OPALS",
-        file: "music/Lost Sky x OPALS - Hero's Ending.mp3"
-    }
-];
 
 let currentSong = 0;
 let started = false;
@@ -615,8 +563,8 @@ function leiteWeiter() {
 
 // Mausrad
 window.addEventListener('wheel', function(e) {
-    if (scrolldist++ < 3) {
-	document.getElementById("scroll").textContent = "Scroll further to see Projects";
+    if (scrolldist++ < 3 && e.deltaY > 0) {
+	document.getElementById("scroll").textContent = "Scroll down further to see Projects";
 	return;
 }
     if (e.deltaY > 0) leiteWeiter();
@@ -628,21 +576,10 @@ window.addEventListener('touchstart', function(e) {
 });
 window.addEventListener('touchmove', function(e) {
     if (startY - e.touches[0].clientY > 10) {
-	document.getElementById("scroll").textContent = "Scroll further to see Projects";
+	document.getElementById("scroll").textContent = "Scroll down further to see Projects";
 }
     if (startY - e.touches[0].clientY > 60) leiteWeiter();
 });
-
-function checkScreen() {
-    if ((window.innerWidth < 610 || window.innerHeight < 785) && !weitergeleitet) {
-        weitergeleitet = true;
-        window.location.href = "mobile";
-    }
-}
-// Beim Laden prüfen
-window.addEventListener('load', checkScreen);
-// Bei jeder Größenänderung prüfen
-window.addEventListener('resize', checkScreen);
 </script>
 
 </body>
