@@ -221,7 +221,7 @@ h1{
 
 .easter-egg:hover{
     opacity:1;
-    bottom:8px;
+    bottom:6px;
 }
 
 body{
@@ -318,6 +318,12 @@ body{
     display: block;
 }
 
+.scroll {
+    font-size:14px;
+    color:rgba(255,255,255,.25);
+    display: block;
+}
+
 </style>
 </head>
 <body>
@@ -374,6 +380,9 @@ body{
 	<button id="skip-btn">▶I</button>
     </div>
 
+</div>
+<div class="scroll" id="scroll">
+    Scroll to see Projects
 </div>
 <audio id="bgmusic">
     <source src="music/Tobu - If I Disappear (ft. Tom Mårtensson).mp3" type="audio/mpeg">
@@ -594,6 +603,46 @@ document.addEventListener("mousemove", e => {
     document.body.style.setProperty("--mouse-x", `${e.clientX}px`);
     document.body.style.setProperty("--mouse-y", `${e.clientY}px`);
 });
+
+let weitergeleitet = false;
+let scrolldist = 0;
+
+function leiteWeiter() {
+    if (weitergeleitet) return;
+    weitergeleitet = true;
+    window.location.href = 'projects';
+}
+
+// Mausrad
+window.addEventListener('wheel', function(e) {
+    if (scrolldist++ < 3) {
+	document.getElementById("scroll").textContent = "Scroll further to see Projects";
+	return;
+}
+    if (e.deltaY > 0) leiteWeiter();
+});
+// 2. Touch (mobil)
+let startY = 0;
+window.addEventListener('touchstart', function(e) {
+    startY = e.touches[0].clientY;
+});
+window.addEventListener('touchmove', function(e) {
+    if (startY - e.touches[0].clientY > 10) {
+	document.getElementById("scroll").textContent = "Scroll further to see Projects";
+}
+    if (startY - e.touches[0].clientY > 60) leiteWeiter();
+});
+
+function checkScreen() {
+    if ((window.innerWidth < 610 || window.innerHeight < 785) && !weitergeleitet) {
+        weitergeleitet = true;
+        window.location.href = "mobile";
+    }
+}
+// Beim Laden prüfen
+window.addEventListener('load', checkScreen);
+// Bei jeder Größenänderung prüfen
+window.addEventListener('resize', checkScreen);
 </script>
 
 </body>

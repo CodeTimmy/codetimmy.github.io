@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meine Projekte</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #090A0F;
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+/* Sterne im Hintergrund */
+.star {
+    position: fixed;
+    background: white;
+    border-radius: 50%;
+    top: -10px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to { transform: translateY(105vh); }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, max-content));
+    gap: 60px;
+    margin-top: 0px;
+}
+
+.card {
+    border-radius: 15px;
+    padding: 20px;
+    transition: 0.2s;
+    cursor: pointer;
+    max-width: 300px;
+    width: 100%;
+    z-index: 10;
+    position: relative;
+    background: rgba(255, 255, 255, 0.015);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.021);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    overflow: hidden;
+}
+
+.card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 68, 68, 0.4);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px);
+    backdrop-filter: blur(20px);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+    opacity: 0.09;
+}
+.card:hover img {
+    opacity: 1;
+}
+
+.card h2 {
+    color: rgba(255,255,255,0.12);
+    margin: 10px 0 5px;
+}
+.card:hover h2 {
+    color: rgba(255,255,255,0.9);
+}
+
+.card p {
+    color: rgba(255,255,255,0.12);
+    font-size: 14px;
+    opacity: 0.8;
+}
+.card:hover p {
+    color: rgba(255,255,255,0.9);
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: rgba(255,255,255,0.12);
+    text-decoration: none;
+}
+.card:hover a {
+    color: rgba(255,255,255,0.9);
+}
+</style>
+</head>
+
+<body>
+
+<h1>Meine Projekte</h1>
+
+<div class="grid">
+
+    <!-- <div class="card">
+        <img src="assets/playcookie.webp">
+        <h2>Play Cookie Network</h2>
+        <p>Vielseitiges Minecraft Netzwerk mit Minigames, SMP und <s>Citybuild</s></p>
+        <a href="https://dsc.gg/playcookie">Mehr...</a>
+    </div> -->
+    
+    <div class="card">
+        <img src="assets/python.png">
+        <h2>Player.py</h2>
+        <p>Ein minimalistischer funktionsreicher Audioplayer</p>
+        <a href="https://github.com/CodeTimmy/player.py">Mehr...</a>
+        <!-- <a href="/projects/player">Mehr...</a> -->
+    </div>
+    
+</div>
+<script>
+// Sterne regnen lassen
+for (let i = 0; i < 120; i++) {
+    let star = document.createElement('div');
+    star.className = 'star';
+    let size = Math.random() * 3 + 'px';
+    star.style.width = size;
+    star.style.height = size;
+    star.style.left = Math.random() * 100 + 'vw';
+    star.style.animationDuration = Math.random() * 4 + 2 + 's';
+    star.style.animationDelay = '-' + Math.random() * 10 + 's';
+    document.body.appendChild(star);
+}
+</script>
+</body>
+</html>

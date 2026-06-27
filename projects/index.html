@@ -1,140 +1,332 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meine Projekte</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projekte – CodeTimmy</title>
 
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background: #090A0F;
-    color: white;
-    margin: 0;
-    padding: 20px;
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/avatars/1358450814980460780/417a606ac8c842047aebc80e3f21cc3f.png?size=128" />
 
-h1 {
-    text-align: center;
-}
+    <style>
+        /* ---------- Sterne im Hintergrund (fallend) ---------- */
+        .star {
+            position: absolute;
+            background: rgba(50, 50, 100, 0.7);
+            border-radius: 50%;
+            top: -10px;
+            animation: fall 100s linear infinite;
+        }
 
-/* Sterne im Hintergrund */
-.star {
-    position: fixed;
-    background: white;
-    border-radius: 50%;
-    top: -10px;
-    animation: fall linear infinite;
-}
+        @keyframes fall {
+            to {
+                transform: translateY(105vh);
+            }
+        }
 
-@keyframes fall {
-    to { transform: translateY(105vh); }
-}
+        /* ---------- Grundlegendes ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, max-content));
-    gap: 60px;
-    margin-top: 0px;
-}
+        body {
+            --mouse-x: 50%;
+            --mouse-y: 50%;
 
-.card {
-    border-radius: 15px;
-    padding: 20px;
-    transition: 0.2s;
-    cursor: pointer;
-    max-width: 300px;
-    width: 100%;
-    z-index: 10;
-    position: relative;
-    background: rgba(255, 255, 255, 0.015);
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.021);
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    overflow: hidden;
-}
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            flex-direction: column;
+            gap: 30px;
 
-.card:hover {
-    background: rgba(255, 255, 255, 0.07);
-    border-color: rgba(255, 68, 68, 0.4);
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-    transform: translateY(-5px);
-    backdrop-filter: blur(20px);
-}
+            background:
+                radial-gradient(circle at 20% 20%, rgba(110, 0, 255, .08), transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(0, 150, 255, .01), transparent 30%),
+                radial-gradient(circle 300px at var(--mouse-x) var(--mouse-y), rgba(0, 150, 255, .02), transparent 30%),
+                linear-gradient(135deg, #040612, #0b1024);
+        }
 
-.card img {
-    width: 100%;
-    border-radius: 10px;
-    opacity: 0.09;
-}
-.card:hover img {
-    opacity: 1;
-}
+        .stars-bg {
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(white 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: .2;
+            animation: moveStars 60s linear infinite;
+            pointer-events: none;
+        }
 
-.card h2 {
-    color: rgba(255,255,255,0.12);
-    margin: 10px 0 5px;
-}
-.card:hover h2 {
-    color: rgba(255,255,255,0.9);
-}
+        @keyframes moveStars {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(50px);
+            }
+        }
 
-.card p {
-    color: rgba(255,255,255,0.12);
-    font-size: 14px;
-    opacity: 0.8;
-}
-.card:hover p {
-    color: rgba(255,255,255,0.9);
-}
+        /* ---------- Back‑Button (oben links) ---------- */
+        .back-button {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            z-index: 999;
 
-.card a {
-    display: inline-block;
-    margin-top: 10px;
-    color: rgba(255,255,255,0.12);
-    text-decoration: none;
-}
-.card:hover a {
-    color: rgba(255,255,255,0.9);
-}
-</style>
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, .12);
+            background: rgba(255, 255, 255, .06);
+            backdrop-filter: blur(20px);
+
+            color: white;
+            font-size: 1.6rem;
+            text-decoration: none;
+            line-height: 1;
+
+            transition: .3s ease;
+            box-shadow: 0 0 25px rgba(0, 0, 0, .3), 0 0 40px rgba(102, 0, 255, .10);
+        }
+
+        .back-button:hover {
+            transform: scale(1.1) translateY(-2px);
+            border-color: rgba(130, 170, 255, .4);
+            box-shadow: 0 0 40px rgba(0, 0, 0, .45), 0 0 70px rgba(102, 0, 255, .25);
+            background: rgba(255, 255, 255, .12);
+        }
+
+        /* ---------- Projekte‑Container ---------- */
+        .projects-wrapper {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 1200px;
+            padding: 20px 10px;
+        }
+
+        .projects-headline {
+            color: white;
+            font-size: 2.2rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 20px rgba(100, 150, 255, .25);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        /* ---------- Projekt‑Karte ---------- */
+        .project-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+
+            background: rgba(255, 255, 255, .06);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, .12);
+            border-radius: 25px;
+            padding: 20px 18px 22px;
+
+            opacity: 0.3;
+            transition: .6s ease;
+            box-shadow:
+                0 0 25px rgba(0, 0, 0, .4),
+                0 0 40px rgba(102, 0, 255, .15);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: rgba(130, 170, 255, .4);
+            opacity: 0.9;
+            box-shadow:
+                0 0 40px rgba(0, 0, 0, .45),
+                0 0 70px rgba(102, 0, 255, .35),
+                0 0 100px rgba(0, 150, 255, .15);
+        }
+
+        .project-card img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, .2);
+            box-shadow: 0 0 25px rgba(100, 150, 255, .35);
+            transition: .3s;
+            margin-bottom: 14px;
+            flex-shrink: 0;
+        }
+
+        .project-card img:hover {
+            transform: scale(1.05);
+        }
+
+        .project-card h3 {
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .project-card p {
+            color: #cfd6ff;
+            font-size: .9rem;
+            font-weight: 300;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* ---------- Easter‑Egg ---------- */
+        .easter-egg {
+            position: fixed;
+            bottom: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            color: rgba(255, 255, 255, .15);
+            opacity: 0;
+            transition: .3s;
+            user-select: none;
+        }
+
+        .easter-egg:hover {
+            opacity: 1;
+            bottom: 8px;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 700px) {
+            .projects-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-headline {
+                font-size: 1.8rem;
+            }
+
+            .project-card img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .back-button {
+                top: 16px;
+                left: 16px;
+                width: 42px;
+                height: 42px;
+                font-size: 1.3rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<h1>Meine Projekte</h1>
+    <!-- Sternenhintergrund (fest) -->
+    <div class="stars-bg"></div>
 
-<div class="grid">
+    <!-- 🔙 Back‑Button (oben links) -->
+    <a href="https://codetimmy.github.io/" class="back-button" title="Zurück zur Startseite">◀</a>
 
-    <!-- <div class="card">
-        <img src="assets/playcookie.webp">
-        <h2>Play Cookie Network</h2>
-        <p>Vielseitiges Minecraft Netzwerk mit Minigames, SMP und <s>Citybuild</s></p>
-        <a href="https://dsc.gg/playcookie">Mehr...</a>
-    </div> -->
-    
-    <div class="card">
-        <img src="assets/python.png">
-        <h2>Player.py</h2>
-        <p>Ein minimalistischer funktionsreicher Audioplayer</p>
-        <a href="https://github.com/CodeTimmy/player.py">Mehr...</a>
-        <!-- <a href="/projects/player">Mehr...</a> -->
+    <!-- Hauptcontainer -->
+    <div class="projects-wrapper">
+        <h1 class="projects-headline">✨ Meine Projekte</h1>
+
+        <div class="projects-grid">
+            <!-- Karte 1 -->
+            <a href="https://github.com/codetimmy/player.py" target="_blank" class="project-card">
+                <img src="assets/python.png" alt="Python PNG" />
+                <h3>Player.py</h3>
+                <p>Minimalistic Music Player with every Feature you could want.</p>
+            </a>
+
+            <!-- Karte 2
+            <a href="https://example.com/projekt-2" target="_blank" class="project-card">
+                <img src="https://picsum.photos/seed/projekt2/200/200" alt="Projekt 2" />
+                <h3>Projekt Beta</h3>
+                <p>Interaktive Web‑App mit Fokus auf Performance.</p>
+            </a> -->
+
+            <!-- Karte 3
+            <a href="https://example.com/projekt-3" target="_blank" class="project-card">
+                <img src="https://picsum.photos/seed/projekt3/200/200" alt="Projekt 3" />
+                <h3>Projekt Gamma</h3>
+                <p>Open‑Source Bibliothek für Datenvisualisierung.</p>
+            </a> -->
+
+            <!-- Karte 4
+            <a href="https://example.com/projekt-4" target="_blank" class="project-card">
+                <img src="https://picsum.photos/seed/projekt4/200/200" alt="Projekt 4" />
+                <h3>Projekt Delta</h3>
+                <p>Minimalistisches Dashboard für Echtzeit‑Analysen.</p>
+            </a> -->
+
+            <!-- Karte 5
+            <a href="https://example.com/projekt-5" target="_blank" class="project-card">
+                <img src="https://picsum.photos/seed/projekt5/200/200" alt="Projekt 5" />
+                <h3>Projekt Epsilon</h3>
+                <p>Game‑Jam Gewinner – Plattformer mit Physik.</p>
+            </a> -->
+
+            <!-- Karte 6
+            <a href="https://example.com/projekt-6" target="_blank" class="project-card">
+                <img src="https://picsum.photos/seed/projekt6/200/200" alt="Projekt 6" />
+                <h3>Projekt Zeta</h3>
+                <p>Browser‑Erweiterung für Produktivitäts‑Tracking.</p>
+            </a> -->
+        </div>
     </div>
-    
-</div>
-<script>
-// Sterne regnen lassen
-for (let i = 0; i < 120; i++) {
-    let star = document.createElement('div');
-    star.className = 'star';
-    let size = Math.random() * 3 + 'px';
-    star.style.width = size;
-    star.style.height = size;
-    star.style.left = Math.random() * 100 + 'vw';
-    star.style.animationDuration = Math.random() * 4 + 2 + 's';
-    star.style.animationDelay = '-' + Math.random() * 10 + 's';
-    document.body.appendChild(star);
-}
-</script>
+
+    <!-- Easter‑Egg (Text) -->
+    <div class="easter-egg">yes, this was made with chatgpt</div>
+
+    <!-- Skripte: Sterne + Maus‑Glow -->
+    <script>
+        // Sterne regnen lassen
+        for (let i = 0; i < 240; i++) {
+            let star = document.createElement('div');
+            star.className = 'star';
+            let size = Math.random() * 3 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.animationDuration = Math.random() * 16 + 8 + 's';
+            star.style.animationDelay = '-' + Math.random() * 40 + 's';
+            document.body.appendChild(star);
+        }
+
+        // Maus‑Glow (CSS‑Variablen aktualisieren)
+        document.addEventListener('mousemove', e => {
+            document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
+            document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
+        });
+    </script>
+
 </body>
 </html>
