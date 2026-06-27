@@ -359,10 +359,10 @@ window.addEventListener('touchstart', function(e) {
     startY = e.touches[0].clientY;
 });
 window.addEventListener('touchmove', function(e) {
-    if (startY - e.touches[0].clientY < 10) {
+    if (startY - e.touches[0].clientY < -10) {
 	document.getElementById("scroll").textContent = "Scroll up further to go back";
 }
-    if (startY - e.touches[0].clientY < 60) leiteWeiter();
+    if (startY - e.touches[0].clientY < -60) leiteWeiter();
 });
 </script>
 
