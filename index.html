@@ -55,13 +55,15 @@ body{
     opacity:.2;
     offset-path: circle(25px);
     offset-rotate: 0deg; 
-    animation:moveStars 30s ease-in-out infinite;
+    animation:moveStars 45s ease-in-out infinite;
 }
 
 @keyframes moveStars{
-    0% {transform: translate(-40px, -15px);}
-    50% {transform: translate(-5px, 10px);}
-    100% {transform: translate(-40px, 35px);}
+    0% {transform: translate(-20px, 0px);}
+    25% {transform: translate(-5px, 20px);}
+    50% {transform: translate(-20px, 0px);}
+    75% {transform: translate(-35px, 20px);}
+    100% {transform: translate(-20px, 0px);}
 }
 
 .card{
@@ -233,8 +235,8 @@ body{
 }
 
 .music-card{
-    width:60%;
-    max-width:467px;
+    width:70%;
+    max-width:550px;
 
     background:rgba(255,255,255,.06);
     backdrop-filter:blur(20px);
@@ -267,6 +269,76 @@ body{
     box-shadow:
         0 0 40px rgba(0,0,0,.45),
         0 0 70px rgba(102,0,255,.25);
+}
+
+.volume-card{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    bottom: 15px;
+    right: 10px;
+    width: 65px;
+    z-index: 10;
+
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:20px;
+
+    opacity: 0.3;
+
+    transition: .6s;
+
+    box-shadow:
+        0 0 25px rgba(0,0,0,.4),
+        0 0 40px rgba(102,0,255,.15);
+}
+
+.volume-card:hover{
+    transform:translateY(-4px);
+
+    border-color:rgba(130,170,255,.4);
+
+    opacity: 0.8;
+
+    box-shadow:
+        0 0 40px rgba(0,0,0,.45),
+        0 0 70px rgba(102,0,255,.25);
+}
+
+.volume-card input {
+    margin: 10px 0;
+    writing-mode: vertical-lr;
+    direction: rtl;
+    display: none;
+    position: relative;
+    z-index: 10;
+
+    height: 225px;  /* Wichtig: Hochkant stellen */
+    width: 35px;    /* Schmales Regler-Bett */
+    
+    /* Zusätzlicher Tipp: Aussehen verschönern */
+    accent-color: #444477; /* Farbe des Regler-Knopfes */
+    cursor: pointer;
+}
+
+.volume-card button{
+    width:57px;
+    height:57px;
+
+    margin: 5px 0;
+
+    border:none;
+    border-radius:12px;
+
+    cursor:pointer;
+
+    background:rgba(255,255,255,.08);
+    color:white;
+
+    transition:.25s;
 }
 
 .music-info{
@@ -433,6 +505,10 @@ window.addEventListener('resize', checkScreen);
     </div>
 
 </div>
+<div class="volume-card">
+    <input type="range" id="volumer" name="volume" min="0" max="200" value="20">
+    <button id="volume-btn">🎵</button>
+</div>
 <div class="scroll" id="scroll">
     Scroll down to see Projects
 </div>
@@ -449,6 +525,8 @@ const music = document.getElementById("bgmusic");
 
 const playBtn = document.getElementById("play-btn");
 const skipBtn = document.getElementById("skip-btn");
+const volumeBtn = document.getElementById("volume-btn");
+const volumeRange = document.getElementById("volumer");
 
 const songTitle = document.getElementById("song-title");
 const songArtist = document.getElementById("song-artist");
@@ -483,25 +561,11 @@ function pauseSong(){
 document.addEventListener("click", () => {
     if(!started){
 
-        music.volume = 0;
+	let volume = 0.05;
+        music.volume = volume;
 
 	loadSong();
         playSong();
-
-        let volume = 0;
-
-        const fade = setInterval(() => {
-
-            volume += 0.01;
-
-            if(volume >= 0.05){
-                volume = 0.05;
-                clearInterval(fade);
-            }
-
-            music.volume = volume;
-
-        }, 500);
 
         started = true;
     }
@@ -526,6 +590,24 @@ skipBtn.addEventListener("click", () => {
 	playSong();
     }
 
+});
+
+volumeRange.style.display = 'none';
+
+volumeBtn.addEventListener("click", () => {
+    if (volumeRange.style.display === 'none') {
+        volumeRange.style.display = 'block';
+    } else {
+        volumeRange.style.display = 'none';
+    }
+});
+
+volumeRange.addEventListener('input', function() {
+    volume = this.value / 400;
+    music.volume = volume;
+});
+volumeRange.addEventListener('change', function() {
+    volumeRange.style.display = 'none';
 });
 
 music.addEventListener("ended", () => {
@@ -569,6 +651,10 @@ window.addEventListener('wheel', function(e) {
 	document.getElementById("scroll").textContent = "Scroll down further to see Projects";
 	return;
 }
+    if (e.deltaY < 0) {
+	document.getElementById("scroll").textContent = "Scroll down to see Projects";
+	return;
+}
     if (e.deltaY > 0) leiteWeiter();
 });
 // 2. Touch (mobil)
@@ -577,8 +663,12 @@ window.addEventListener('touchstart', function(e) {
     startY = e.touches[0].clientY;
 });
 window.addEventListener('touchmove', function(e) {
+    if (e.touches[0].clientX > window.innerWidth - 90) return;
     if (startY - e.touches[0].clientY > 10) {
 	document.getElementById("scroll").textContent = "Scroll down further to see Projects";
+}
+    if (startY - e.touches[0].clientY < -10) {
+	document.getElementById("scroll").textContent = "Scroll down to see Projects";
 }
     if (startY - e.touches[0].clientY > 60) leiteWeiter();
 });
