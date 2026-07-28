@@ -474,7 +474,7 @@ window.addEventListener('resize', checkScreen);
 
     <div class="quote">
 	Hi, I'm Timmy from Germany<br>
-	it's my <p id="time" style="display: inline;">??:?? ??</p><br>
+	<p id="time" style="display: inline;">It's my ??:?? ??</p><br>
 	<br>
 	Hobby: Coding (or something like that...)<br>
 	Favorite Coding Language: Python<br>
@@ -697,7 +697,7 @@ function setClock() {
 	let de_time = de_formatter.format(now)
 	let usr_time = usr_formatter.format(now)
 	if (de_time == usr_time) {
-		clock.textContent = `It's ${de_time}, we are in the same time zone.`
+		clock.textContent = `It's ${de_time}, we're in the same time zone.`
 	} else {
 		clock.textContent = `Your ${usr_time} is my ${de_time}.`
 	}
