@@ -474,7 +474,7 @@ window.addEventListener('resize', checkScreen);
 
     <div class="quote">
 	Hi, I'm Timmy from Germany<br>
-	it's my <p id="time">??:?? ??</p><br>
+	it's my <p id="time" style="display: inline;">??:?? ??</p><br>
 	<br>
 	Hobby: Coding (or something like that...)<br>
 	Favorite Coding Language: Python<br>
@@ -677,9 +677,8 @@ window.addEventListener('touchmove', function(e) {
 
 
 const clock = document.getElementById("time");
-setInterval(() => {
+function setClock() {
 	const now = new Date();
-
 	// Zeitzone Berlin
 	const formatter = new Intl.DateTimeFormat('en-US', {
 	  	timeZone: 'Europe/Berlin',
@@ -688,9 +687,11 @@ setInterval(() => {
 	  	hour12: true,          // AM/PM einschalten
   		// second weglassen → keine Sekunden
 	});
-
 	clock.textContent = formatter.format(now)
-}, 30000);
+}
+setClock()
+setInterval(setClock, 30000);
+
 </script>
 
 </body>
