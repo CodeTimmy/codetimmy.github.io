@@ -473,12 +473,14 @@ window.addEventListener('resize', checkScreen);
     </p>
 
     <div class="quote">
-	Some Bio Stuff or something like that?<br>
-	Nah, lets just put this here:<br>
+	Hi, I'm Timmy from Germany<br>
+	it's my <p id="time">??:?? ??</p><br>
 	<br>
-	'But you don't care, you're unaware<br>
-	Keep moving like the scars aren't even there'<br>
-	- "Diamond Eyes - Everything"
+	Hobby: Coding (or something like that...)<br>
+	Favorite Coding Language: Python<br>
+	Favorite Game: Minecraft/Satisfactory<br>
+	Favorite Song: Diamond Eyes - Everything<br>
+	Best Friend: Bro, I'm not gonna tell you
     </div>
 
     <div class="socials">
@@ -672,6 +674,23 @@ window.addEventListener('touchmove', function(e) {
 }
     if (startY - e.touches[0].clientY > 60) leiteWeiter();
 });
+
+
+const clock = document.getElementById("time");
+setInterval(() => {
+	const now = new Date();
+
+	// Zeitzone Berlin
+	const formatter = new Intl.DateTimeFormat('en-US', {
+	  	timeZone: 'Europe/Berlin',
+	  	hour: '2-digit',
+	  	minute: '2-digit',
+	  	hour12: true,          // AM/PM einschalten
+  		// second weglassen → keine Sekunden
+	});
+
+	clock.textContent = formatter.format(now)
+}, 30000);
 </script>
 
 </body>
