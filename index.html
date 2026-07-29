@@ -508,7 +508,7 @@ window.addEventListener('resize', checkScreen);
 
 </div>
 <div class="volume-card">
-    <input type="range" id="volumer" name="volume" min="0" max="200" value="20">
+    <input type="range" id="volumer" name="volume" min="0" max="200" value="40">
     <button id="volume-btn">🎵</button>
 </div>
 <div class="scroll" id="scroll">
@@ -535,6 +535,10 @@ const songArtist = document.getElementById("song-artist");
 
 let currentSong = 0;
 let started = false;
+
+let playlist = [];
+
+loadList()
 
 function loadSong(){
 
@@ -563,7 +567,7 @@ function pauseSong(){
 document.addEventListener("click", () => {
     if(!started){
 
-	let volume = 0.05;
+	let volume = 0.1;
         music.volume = volume;
 
 	loadSong();
