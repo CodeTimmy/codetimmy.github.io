@@ -1,102 +1,88 @@
-const playlist = [
-    {
-        title: "In My Head (feat. Britt Lari)",
-        artist: "Arcando",
-        file: "music/Arcando - In My Head (feat. Britt Lari).mp3"
-    },
-    {
-        title: "Everything",
-        artist: "Diamond Eyes",
-        file: "music/Diamond Eyes - Everything.mp3"
-    },
-    {
-        title: "Flutter",
-        artist: "Diamond Eyes",
-        file: "music/Diamond Eyes - Flutter.mp3"
-    },
-    {
-        title: "On My Own (feat. Karra)",
-        artist: "Far Out",
-        file: "music/Far Out - On My Own (feat. Karra).mp3"
-    },
-    {
-        title: "Dead of Night (VIP) [NCS Release]",
-        artist: "if found",
-        file: "music/if found - Dead of Night (VIP) [NCS Release].mp3"
-    },
-    {
-        title: "Moments",
-        artist: "Lost Identities x Robbie Rosen",
-        file: "music/Lost Identities x Robbie Rosen - Moments.mp3"
-    },
-    {
-        title: "If I Disappear (ft. Tom Mårtensson)",
-        artist: "Tobu",
-        file: "music/Tobu - If I Disappear (ft. Tom Mårtensson).mp3"
-    },
-    {
-        title: "Live A Lie (ft. Andreas Stone)",
-        artist: "Rival x Egzod",
-        file: "music/Rival x Egzod - Live A Lie (ft. Andreas Stone).mp3"
-    },
-    {
-        title: "Escape With Me (feat. Charlotte Haining)",
-        artist: "Halcyon & Starlyte",
-        file: "music/Halcyon & Starlyte - Escape With Me (feat. Charlotte Haining).mp3"
-    },
-    {
-        title: "I Know",
-        artist: "3rd Prototype",
-        file: "music/3rd Prototype - I Know.mp3"
-    },
-    {
-        title: "Freedom",
-        artist: "32Stitches & CHENDA, Harley Bird",
-        file: "music/32Stitches & CHENDA, Harley Bird - Freedom.mp3"
-    },
-    {
-        title: "See The Sun",
-        artist: "Abstrakt, weloveyouspydee",
-        file: "music/Abstrakt, weloveyouspydee - See The Sun.mp3"
-    },
-    {
-        title: "Where We Started (feat. Jex)",
-        artist: "Lost Sky",
-        file: "music/Lost Sky - Where We Started (feat. Jex).mp3"
-    },
-    {
-        title: "Somebody Like Me (feat. Halvorsen)",
-        artist: "JJD & Division One",
-        file: "music/JJD & Division One - Somebody Like Me (feat. Halvorsen).mp3"
-    },
-    {
-        title: "Find A Way (feat. Cammie Robinson)",
-        artist: "T & Sugah x NCT",
-        file: "music/T & Sugah x NCT - Find A Way (feat. Cammie Robinson).mp3"
-    },
-    {
-        title: "Unbreakable",
-        artist: "Lost Sky x ANGELPLAYA x Chris Linton",
-        file: "music/Lost Sky x ANGELPLAYA x Chris Linton - Unbreakable.mp3"
-    },
-    {
-        title: "Can't Heal You",
-        artist: "Bad Computer",
-        file: "music/Bad Computer - Can't Heal You.mp3"
-    },
-    {
-        title: "Warzone (feat. Zaug)",
-        artist: "Clarx",
-        file: "music/Clarx - Warzone (feat. Zaug).mp3"
-    },
-    {
-        title: "Deep End",
-        artist: "FLOTE, Fendy Cisneros, Luxtides",
-        file: "music/FLOTE, Fendy Cisneros, Luxtides - Deep End.mp3"
-    },
-    {
-        title: "Hero's Ending",
-        artist: "Lost Sky x OPALS",
-        file: "music/Lost Sky x OPALS - Hero's Ending.mp3"
-    }
-];
+function loadList(){
+  playlist = [
+    { title: "Flutter (Lyrics)", artist: "Diamond Eyes", file: "music/D77DeiIOv14.mp3" },
+    { title: "Everything (Lyrics)", artist: "Diamond Eyes", file: "music/nvZCtQAEBoE.mp3" },
+    { title: "If I Disappear (ft. Tom Mårtensson)", artist: "Tobu", file: "music/iHA1utIzpws.mp3" },
+    { title: "In My Head (feat. Britt Lari)", artist: "Arcando", file: "music/6vS9ZlY4FzM.mp3" },
+    { title: "On My Own (feat. Karra)", artist: "Far Out", file: "music/ktw8hcSq2mc.mp3" },
+    { title: "Moments", artist: "Lost Identities x Robbie Rosen", file: "music/14CjyUYO8lE.mp3" },
+    { title: "Dead of Night (VIP) [NCS Release]", artist: "if found", file: "music/cj-HnSUqx3w.mp3" },
+    { title: "Live A Lie (ft. Andreas Stone) [Official Lyric Video]", artist: "Rival x Egzod", file: "music/vOPWzCi0Y_Y.mp3" },
+    { title: "Hero's Ending (Official Video)", artist: "Lost Sky x OPALS", file: "music/tMp7L8LL0IY.mp3" },
+    { title: "See The Sun", artist: "Abstrakt, weloveyouspydee", file: "music/-1exs4ZBD4k.mp3" },
+    { title: "Deep End", artist: "FLOTE, Fendy Cisneros, Luxtides", file: "music/dMn2MNWjIdo.mp3" },
+    { title: "Warzone (feat. Zaug)", artist: "Clarx", file: "music/pWAKZ-6xIxQ.mp3" },
+    { title: "I Know", artist: "3rd Prototype", file: "music/ZRnrjxDKv6Q.mp3" },
+    { title: "Somebody Like Me (feat. Halvorsen)", artist: "JJD & Division One", file: "music/9CLrRSIlJ9w.mp3" },
+    { title: "Find A Way (feat. Cammie Robinson)", artist: "T & Sugah x NCT", file: "music/bcXBfv-U4YU.mp3" },
+    { title: "Freedom", artist: "32Stitches & CHENDA, Harley Bird", file: "music/JRQei9hJekc.mp3" },
+    { title: "Unbreakable", artist: "Lost Sky x ANGELPLAYA x Chris Linton", file: "music/ymHZIhsDuH0.mp3" },
+    { title: "Can't Heal You", artist: "Bad Computer", file: "music/iw0sC4Cj3HE.mp3" },
+    { title: "With You (Lyrics)", artist: "Marin Hoxha & Chris Linton", file: "music/XUsZKmHsMPo.mp3" },
+    { title: "Not Giving In", artist: "Culture Code", file: "music/R_NsDmpu-Wc.mp3" },
+    { title: "The Other Side", artist: "ROY KNOX & CRVN", file: "music/mAZYH-h_SsY.mp3" },
+    { title: "Lost In The Middle (ft. Mara Necia)", artist: "T & Sugah", file: "music/sXZk9u3I_EI.mp3" },
+    { title: "Carry On", artist: "Lost Sky x Anna Yvette", file: "music/EYekpTUKLNU.mp3" },
+    { title: "Falling (w/ CRVN) (Ayjin Remix)", artist: "Rival", file: "music/qA8JM2EE6j4.mp3" },
+    { title: "Echo", artist: "Apollo On The Run", file: "music/IF0mXhqBv2w.mp3" },
+    { title: "Blank VIP (feat. Tara Louise)", artist: "Disfigure", file: "music/XJLkcpWFfBI.mp3" },
+    { title: "Iris", artist: "Exit Friendzone ft. Eden", file: "music/dRJCwSrStZA.mp3" },
+    { title: "Survive (feat. Neon Dreams)", artist: "Vanze", file: "music/cvl8e2se8Q4.mp3" },
+    { title: "Fall To My Grave ft. Silent Child", artist: "SVRRIC & RUINDKID", file: "music/11R9Hmzxg-k.mp3" },
+    { title: "Falling (ft. Harley Bird)", artist: "Diviners", file: "music/6Lgc5U33Zpk.mp3" },
+    { title: "Breathe Me In", artist: "ROY KNOX", file: "music/1xtx6OcvoS8.mp3" },
+    { title: "Let's Run Away (feat. Rico 56) [NCS Release]", artist: "Jay Eskar & Doxed", file: "music/Z_QVKFKjpZo.mp3" },
+    { title: "The One (feat. Meron Ryan)", artist: "Dualistic", file: "music/Pi_8Hc4tQZQ.mp3" },
+    { title: "Never Be Alone", artist: "TheFatRat", file: "music/Ic-gZlPFTkQ.mp3" },
+    { title: "Frontier (ft. Jasmina Lin & Jay Christopher)", artist: "Krale", file: "music/pGMojZB0Lm0.mp3" },
+    { title: "Flames", artist: "Vena Cava & Project Veresen feat. Raya", file: "music/nFnNRYKeFWI.mp3" },
+    { title: "Upside Down", artist: "Matthew Blake feat. Tyler Fiore", file: "music/oqxicYw-6PU.mp3" },
+    { title: "The Light", artist: "Phantom Sage", file: "music/1YRWKGBiwTw.mp3" },
+    { title: "Keep You", artist: "Spektrum & Sara Skinner", file: "music/YnmOmNqBWtM.mp3" },
+    { title: "Shine (Gabriel Drew & Bloom Remix)", artist: "Spektrem", file: "music/rWVjht-MIto.mp3" },
+    { title: "Out Here", artist: "Kasger", file: "music/icXOx14Obuo.mp3" },
+    { title: "Saved Me Now [NCS Release]", artist: "Matthew Blake feat. Katie Boyle", file: "music/EKNjECcosJc.mp3" },
+    { title: "Angel (feat. Parker Polhill & Bibiane Z)", artist: "Vanze & Reunify", file: "music/A5UM2RCs63c.mp3" },
+    { title: "Bleed", artist: "Axol & The Tech Thieves", file: "music/xYfn7MWU7TQ.mp3" },
+    { title: "Royalty (ft. Neoni) (Wiguez & Alltair Remix)", artist: "Egzod & Maestro Chives", file: "music/OhX8GC3mm74.mp3" },
+    { title: "No Pressure (feat. Jon Becker)", artist: "Tim Beeren & Chenda", file: "music/K6ry2Lm9-2Q.mp3" },
+    { title: "Your Poison", artist: "ROY KNOX", file: "music/lBcdnwjvwKA.mp3" },
+    { title: "Need You Again", artist: "SadBois, ROY KNOX, Jake Neumar", file: "music/Rg6QsFkTmWg.mp3" },
+    { title: "Pressure (ft. imallryt)", artist: "Wiguez & borne", file: "music/92lY8OTy8Bc.mp3" },
+    { title: "Made For The Game (ft. KAZHI)", artist: "Cartoon, AC13, Jessee", file: "music/6Rb-6zRke_c.mp3" },
+    { title: "On & On (feat. Daniel Levi)", artist: "Cartoon, Jéja", file: "music/K4DyBUG242c.mp3" },
+    { title: "Why We Lose (feat. Coleman Trapp)", artist: "Cartoon, Jéja", file: "music/zyXmsVwZqX4.mp3" },
+    { title: "Control (feat. Jex)", artist: "Unknown Brain x Rival", file: "music/bLZHcnuqscU.mp3" },
+    { title: "Story", artist: "Rameses B", file: "music/mfEDa8kGmgY.mp3" },
+    { title: "Feel Again (feat. Harley Bird)", artist: "Culture Code", file: "music/YGLA_V_yZXo.mp3" },
+    { title: "Will You Come (ft. Reuben Cameron)", artist: "Palm Skies & DEAN", file: "music/9S2RQEcArb0.mp3" },
+    { title: "Let Me In", artist: "Andromedik", file: "music/DdISOatomY4.mp3" },
+    { title: "4U (feat. Jex Jordyn)", artist: "Convex", file: "music/dMnWZ8tAUkU.mp3" },
+    { title: "Shadows (Feat. Svniivan)", artist: "ROY KNOX x WTCHOUT", file: "music/o8Y_uR6ZDxo.mp3" },
+    { title: "die 4 u (feat. damnboy!)", artist: "if found x nøll", file: "music/x7Sh-7m46Rk.mp3" },
+    { title: "Ghost Town (feat. Vanessa Campagna)", artist: "Arcando & ThatBehavior", file: "music/8pcvWIfJvvQ.mp3" },
+    { title: "Hundred Proof", artist: "ARIA, HXPETRAIN", file: "music/uK0eEV0UsWA.mp3" },
+    { title: "Back2u!", artist: "Postcard, MNTRL, Sara Benyo", file: "music/bev427levN4.mp3" },
+    { title: "Lost Without You (ft. Felix Samuel)", artist: "Millbrook", file: "music/X0aiejD-PJY.mp3" },
+    { title: "Hold On", artist: "NCT & James Burki", file: "music/3RAW_0tZN4Y.mp3" },
+    { title: "With You", artist: "OBLVYN x RIELL", file: "music/xwgmycH8Yhk.mp3" },
+    { title: "Good With It", artist: "Rameses B & SOUNDR", file: "music/RInypZYiiDM.mp3" },
+    { title: "Night Caller (feat. Project Nightfall) [NCS Release]", artist: "Abandoned & InfiNoise", file: "music/kLkhKjR9_A8.mp3" },
+    { title: "See You at the End (feat. Brenton Mattheus) [NCS Release]", artist: "Abandoned, InfiNoise & Mendum", file: "music/Qj2seyOEKG0.mp3" },
+    { title: "Go Home", artist: "Maduk", file: "music/qScpgKbuTLw.mp3" },
+    { title: "Something More", artist: "WiDE AWAKE", file: "music/ke-uyk8qylU.mp3" },
+    { title: "Glowing At Night", artist: "Jo Cohen & BQ", file: "music/bwrCCc6hWKo.mp3" },
+    { title: "Chains (feat. Alina Renae)", artist: "Far Out", file: "music/_RdMzr-xdmA.mp3" },
+    { title: "Into The Wild (feat. Izzy)", artist: "Kovan & Alex Skrindo", file: "music/FZC-XgLk8O4.mp3" },
+    { title: "Sharks", artist: "Zeli", file: "music/zfglpSSzvqg.mp3" },
+    { title: "Drop In The Ocean (ft. India Dupriez)", artist: "Poylow, Harry Taylor, MAD SNAX", file: "music/l0MB2iC_pOs.mp3" },
+    { title: "Walls (ft. Bryan Finlay) [Official Lyric Video]", artist: "Rival", file: "music/YEx8gC2KWfw.mp3" },
+    { title: "Satisfy The Rage (ft. Micah Martin) [Lyric Video]", artist: "Rival", file: "music/iLH-WNsbgqo.mp3" },
+    { title: "Oblivion (Official Lyric Video)", artist: "Neoni x Zayde Wølf", file: "music/PZGi3Iz0e-s.mp3" },
+    { title: "Feel Like Home (w/ Laura Brehm, Caravn & Lea Brückner) [Official Lyric Video]", artist: "Rival", file: "music/MmSuop5irus.mp3" },
+    { title: "Stay The Same (ft. Veronica Bravo) [Lyric Video]", artist: "Unknown Brain x Rival", file: "music/MwUHbHcYRVk.mp3" },
+    { title: "Demons (ft. Veronica Bravo) [Lyric Video]", artist: "Rival x Max Hurrell", file: "music/crsXsEKGgpA.mp3" },
+    { title: "Demons (ft. Veronica Bravo) [Lyric Video]", artist: "Rival x Max Hurrell", file: "music/crsXsEKGgpA.mp3" },
+    { title: "Runaway", artist: "Guy Arthur", file: "music/TH6jeGrmoVs.mp3" },
+  ];
+}
