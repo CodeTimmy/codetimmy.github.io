@@ -2,7 +2,7 @@ name: Update Discord Status
 
 on:
   schedule:
-    - cron: '*/30 * * * *'  # Alle 30 Minuten
+    - cron: '0,30 * * * *'  # Alle 30 Minuten
   workflow_dispatch:        # Damit du es manuell starten kannst
 
 jobs:
