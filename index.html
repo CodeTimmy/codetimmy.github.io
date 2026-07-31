@@ -115,11 +115,12 @@ body{
     box-shadow:
         0 0 25px rgba(100,150,255,.35);
 
-    transition:.3s;
+    transition:.6s;
+    transform:rotate(-1deg);
 }
 
 .avatar:hover{
-    transform:scale(1.05);
+    transform:rotate(2deg);
 }
 
 h1{
@@ -434,6 +435,21 @@ body{
     opacity: 0.9;
 }
 
+.status-anchor {
+    display: inline-block;
+    position: relative;
+}
+
+.status {
+    position: absolute;
+    z-index: 9999;
+    color: #747f8d;
+    font-size: 50px;
+    left: 66%;
+    top: 46%;
+    opacity: 0.8;
+}
+
 </style>
 <script>
 function checkScreen() {
@@ -460,8 +476,9 @@ window.addEventListener('resize', checkScreen);
     <img
         class="avatar"
         src="https://cdn.discordapp.com/avatars/1358450814980460780/417a606ac8c842047aebc80e3f21cc3f.png?size=512"
-        alt="Profilbild"
+        alt="pfp"
     >
+	<div class="status" id="status">●</div>
 
     <h1>
 	𝕋𝕚𝕞𝕞𝕪
@@ -473,7 +490,7 @@ window.addEventListener('resize', checkScreen);
     </p>
 
     <div class="quote">
-	Hi, I'm Timmy from Germany, I'm German...<br>
+	Hi, I'm Timmy from Germany<br>
 	<p id="time" style="display: inline;">It's my ??:?? ??</p><br>
 	<br>
 	Hobby: Coding (or something like that...)<br>
@@ -497,7 +514,7 @@ window.addEventListener('resize', checkScreen);
 <div class="music-card">
 
     <div class="music-info">
-        <div id="song-title">🎵 Waiting on Music...</div>
+        <div id="song-title">🎵 Waiting for Music...</div>
         <div id="song-artist">Click anywhere to start the Music!</div>
     </div>
 
@@ -659,6 +676,7 @@ window.addEventListener('wheel', function(e) {
 }
     if (e.deltaY < 0) {
 	document.getElementById("scroll").textContent = "Scroll down to see Projects";
+        let scrolldist = 0;
 	return;
 }
     if (e.deltaY > 0) leiteWeiter();
@@ -675,6 +693,7 @@ window.addEventListener('touchmove', function(e) {
 }
     if (startY - e.touches[0].clientY < -10) {
 	document.getElementById("scroll").textContent = "Scroll down to see Projects";
+        let scrolldist = 0;
 }
     if (startY - e.touches[0].clientY > 60) leiteWeiter();
 });
@@ -707,6 +726,29 @@ function setClock() {
 }
 setClock()
 setInterval(setClock, 30000);
+
+async function fetchDiscordStatus() {
+	try {
+		const response = await fetch('https://api.lanyard.rest/v1/users/1358450814980460780');
+		const data = await response.json();
+		    if (data.success) {
+                const status = data.data.discord_status;
+                const statusDot = document.getElementById('status');
+
+                // Punkt einfärben
+                const colorMap = {
+                    'online': '#3ba55c',
+                    'idle': '#faa81a',
+                    'dnd': '#ed4245',
+                    'offline': '#747f8d'
+                };
+                statusDot.style.color = colorMap[status] || '#747f8d';
+            }
+        } catch (error) {
+            console.error('Fehler beim Abrufen des Discord-Status:', error);
+            document.getElementById('status-text').textContent = 'Fehler';
+	}
+}
 
 </script>
 
