@@ -114,8 +114,6 @@ body{
 
     box-shadow:
         0 0 25px rgba(100,150,255,.35);
-
-    transition:.6s;
 }
 
 h1{
@@ -433,11 +431,12 @@ body{
 .status-anchor {
     display: inline-block;
     position: relative;
-	transform:rotate(-1deg);
+	transition: .5s;
 }
 
 .status-anchor:hover {
-	transform:rotate(1deg);
+	transform:rotate(2deg);
+	transform:scale(1.05);
 }
 
 .status {
