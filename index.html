@@ -485,9 +485,7 @@ window.addEventListener('resize', checkScreen);
     </h1>
     <span class="small">CodeTimmy | EinTimmy | code.timmy | Just Timmy</span>
 
-    <p class="subtitle">
-        Python Developer or something like that?
-    </p>
+    <p class="subtitle" id="activity">Currently doing nothing...</p>
 
     <div class="quote">
 	Hi, I'm Timmy from Germany<br>
@@ -742,7 +740,51 @@ async function fetchDiscordStatus() {
                     'dnd': '#ed4245',
                     'offline': '#747f8d'
                 };
-                statusDot.style.color = colorMap[status] || '#747f8d';
+                statusDot.style.color = colorMap[status] || '#747f8d'
+				const Activities = data.data.activities
+				if (Activities.length) {
+					const Activity = data.data.activities[0].name
+					const ActivityState = data.data.activities[0].state
+					const type = data.data.activities[0].type
+					const ActivityDisp = document.getElementById('activity');
+					if (type == 0) {
+						if (ActivityState) {
+							ActivityDisp.textContent = `Playing ${Activity}, ${ActivityState}`
+						} else {
+							ActivityDisp.textContent = `Playing ${Activity}`
+						}
+					} else if (type == 1) {
+						if (ActivityState) {
+							ActivityDisp.textContent = `Streaming ${Activity}, ${ActivityState}`
+						} else {
+							ActivityDisp.textContent = `Streaming ${Activity}`
+						}
+					} else if (type == 2) {
+						if (ActivityState) {
+							ActivityDisp.textContent = `Listening to ${Activity}, ${ActivityState}`
+						} else {
+							ActivityDisp.textContent = `Listening to ${Activity}`
+						}
+					} else if (type == 3) {
+						if (ActivityState) {
+							ActivityDisp.textContent = `Watching ${Activity}, ${ActivityState}`
+						} else {
+							ActivityDisp.textContent = `Watching ${Activity}`
+						}
+					} else if (type == 4) {
+						const Emoji = data.data.activities[0].emoji.name
+						ActivityDisp.textContent = `${Emoji} ${Activity}`
+					} else if (type == 5) {
+						if (ActivityState) {
+							ActivityDisp.textContent = `Competing in ${Activity}, ${ActivityState}`
+						} else {
+							ActivityDisp.textContent = `Competing in ${Activity}`
+						}
+					} else {
+						ActivityDisp.textContent = `Unknown Activity: ${Activity}, ${ActivityState}`
+				} else {
+					ActivityDisp.textContent = "Currently doing nothing..."
+				}
             }
         } catch (error) {
             console.error('Fehler beim Abrufen des Discord-Status:', error);
