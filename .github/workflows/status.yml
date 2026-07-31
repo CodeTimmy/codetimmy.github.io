@@ -2,14 +2,14 @@ name: Update Discord Status
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Alle 60 Minuten
-  workflow_dispatch:        # Damit du es manuell starten kannst
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
 
 jobs:
   update-status:
     runs-on: ubuntu-latest
     permissions:
-      contents: write       # Wichtig: Darf in den Branch schreiben
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
