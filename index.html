@@ -473,13 +473,15 @@ window.addEventListener('resize', checkScreen);
 <div class="card">
 
     <!-- Discord Avatar -->
-    <img
-        class="avatar"
-        src="https://cdn.discordapp.com/avatars/1358450814980460780/417a606ac8c842047aebc80e3f21cc3f.png?size=512"
-        alt="pfp"
-    >
-	<div class="status" id="status">●</div>
-
+	<div class="status-anchor">
+    	<img
+        	class="avatar"
+        	src="https://cdn.discordapp.com/avatars/1358450814980460780/417a606ac8c842047aebc80e3f21cc3f.png?size=512"
+        	alt="pfp"
+    	>
+		<div class="status" id="status">●</div>
+	</div>
+		
     <h1>
 	𝕋𝕚𝕞𝕞𝕪
     </h1>
@@ -724,7 +726,7 @@ function setClock() {
 		clock.textContent = `Your ${usr_time} is my ${de_time}.`
 	}
 }
-setClock()
+setClock();
 setInterval(setClock, 30000);
 
 async function fetchDiscordStatus() {
@@ -749,6 +751,8 @@ async function fetchDiscordStatus() {
             document.getElementById('status-text').textContent = 'Fehler';
 	}
 }
+fetchDiscordStatus();
+setInterval(fetchDiscordStatus, 30000);
 
 </script>
 
