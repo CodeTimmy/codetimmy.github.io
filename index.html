@@ -116,11 +116,6 @@ body{
         0 0 25px rgba(100,150,255,.35);
 
     transition:.6s;
-    transform:rotate(-1deg);
-}
-
-.avatar:hover{
-    transform:rotate(2deg);
 }
 
 h1{
@@ -438,6 +433,11 @@ body{
 .status-anchor {
     display: inline-block;
     position: relative;
+	transform:rotate(-1deg);
+}
+
+.status-anchor:hover {
+	transform:rotate(1deg);
 }
 
 .status {
