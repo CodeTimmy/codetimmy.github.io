@@ -773,7 +773,11 @@ async function fetchDiscordStatus() {
 						}
 					} else if (type == 4) {
 						const Emoji = data.data.activities[0].emoji.name
-						ActivityDisp.textContent = `${Emoji} ${Activity}`
+						if (Emoji) {
+							ActivityDisp.textContent = `${Emoji} ${Activity}`
+						} else {
+							ActivityDisp.textContent = `${Activity}`
+						}
 					} else if (type == 5) {
 						if (ActivityState) {
 							ActivityDisp.textContent = `Competing in ${Activity}, ${ActivityState}`
