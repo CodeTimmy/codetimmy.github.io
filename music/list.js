@@ -1,5 +1,5 @@
 function loadList(){
-  playlist = [
+  const playlist = [
     { title: "Flutter (Lyrics)", artist: "Diamond Eyes", file: "music/D77DeiIOv14.mp3" },
     { title: "Everything (Lyrics)", artist: "Diamond Eyes", file: "music/nvZCtQAEBoE.mp3" },
     { title: "If I Disappear (ft. Tom Mårtensson)", artist: "Tobu", file: "music/iHA1utIzpws.mp3" },
@@ -84,5 +84,26 @@ function loadList(){
     { title: "Demons (ft. Veronica Bravo) [Lyric Video]", artist: "Rival x Max Hurrell", file: "music/crsXsEKGgpA.mp3" },
     { title: "Demons (ft. Veronica Bravo) [Lyric Video]", artist: "Rival x Max Hurrell", file: "music/crsXsEKGgpA.mp3" },
     { title: "Runaway", artist: "Guy Arthur", file: "music/TH6jeGrmoVs.mp3" },
+    { title: "Sleepwalking (ft. Caravn) [Official Lyric Video]", artist: "Rival", file: "music/1RwJMH88Hqs.mp3" },
+    { title: "Home To Me (with DYSON) [Official Lyric Video]", artist: "Rival", file: "music/UyJ4_Be0P6s.mp3" },
+    { title: "Coming Home (Official Lyric Video)", artist: "Rival x Arc North x Cadmium", file: "music/IactqAnv99I.mp3" },
+    { title: "Mistakes (ft. Emily Stiles)", artist: "Sekai, Spitfya, Rob Gasser", file: "music/053uBFQrnew.mp3" },
+    { title: "Where You Are (w/ Jex) [Official Lyric Video]", artist: "Rival x Lost Sky", file: "music/3Kot6wjYO1s.mp3" },
+    { title: "Live On (w/ Raven Alexander) [Official Lyric Video]", artist: "Rival", file: "music/B5ev_Rw0ZJo.mp3" },
+    { title: "Down (ft. Philip Strand) [Official Lyric Video]", artist: "Rival", file: "music/ZLuJFHZ6Mpw.mp3" },
+    { title: "Be Gone (ft. Caravn) [Official Lyric Video]", artist: "Rival", file: "music/igWd1ILtADM.mp3" },
+    { title: "Scars (w/ Diandra Faye) [Official Lyric Video]", artist: "Rival", file: "music/LtNP5_UejCc.mp3" },
+    { title: "Revival (with Philip Strand) (Official Lyric Video)", artist: "Rival", file: "music/hTn2rNkCXMQ.mp3" },
+    { title: "Better [Official Lyric Video]", artist: "Rival x Arc North x Cadmium", file: "music/TFoSb-25Zkw.mp3" },
+    { title: "Let It Die (ft. Philip Strand) [Official Lyric Video]", artist: "Rival", file: "music/3o1TwbGpxV4.mp3" },
+    { title: "Ghost (feat. Eli Raain)", artist: "CADMIUM", file: "music/tXjxLJOCYcg.mp3" },
+    { title: "Fight In Me (Official Video)", artist: "Lost Sky x Egzod x Alaina Cross", file: "music/rAS12aG0JLw.mp3" },
+    { title: "Catch Me", artist: "Moyo", file: "music/NzFhr9TTBLc.mp3" },
+    { title: "End Of Time (Lyric Video)", artist: "Arc North x Rival x Laura Brehm", file: "music/RlzasiRBQvY.mp3" },
+    { title: "End Of Time (Lyric Video)", artist: "Arc North x Rival x Laura Brehm", file: "music/RlzasiRBQvY.mp3" },
+    { title: "Just Breathe (ft. Jon Becker)", artist: "Rival x Cadmium", file: "music/PCujcdU29cc.mp3" },
+    { title: "Light It Up (feat. Jex)", artist: "Robin Hustin x TobiMorrow", file: "music/bdE_SyHad90.mp3" },
+    { title: "Howling (ft. Asena) (Andromedik Remix)", artist: "Cartoon, Jéja", file: "music/gUQDq9ezuJQ.mp3" },
+    { title: "Crazy", artist: "BEAUZ & JVNA", file: "music/xgcLwtGlgLU.mp3" },
   ];
 }
