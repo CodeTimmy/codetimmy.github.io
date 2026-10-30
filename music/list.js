@@ -1,5 +1,5 @@
 function loadList(){
-  let playlist = [
+  const playlist = [
     { title: "Flutter (Lyrics)", artist: "Diamond Eyes", file: "music/D77DeiIOv14.mp3" },
     { title: "Everything (Lyrics)", artist: "Diamond Eyes", file: "music/nvZCtQAEBoE.mp3" },
     { title: "If I Disappear (ft. Tom Mårtensson)", artist: "Tobu", file: "music/iHA1utIzpws.mp3" },
@@ -104,6 +104,6 @@ function loadList(){
     { title: "Just Breathe (ft. Jon Becker)", artist: "Rival x Cadmium", file: "music/PCujcdU29cc.mp3" },
     { title: "Light It Up (feat. Jex)", artist: "Robin Hustin x TobiMorrow", file: "music/bdE_SyHad90.mp3" },
     { title: "Howling (ft. Asena) (Andromedik Remix)", artist: "Cartoon, Jéja", file: "music/gUQDq9ezuJQ.mp3" },
-    { title: "Crazy", artist: "BEAUZ & JVNA", file: "music/xgcLwtGlgLU.mp3" }
-  ]
+    { title: "Crazy", artist: "BEAUZ & JVNA", file: "music/xgcLwtGlgLU.mp3" },
+  ];
 }
