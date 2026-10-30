@@ -1,5 +1,5 @@
 function loadList(){
-  const playlist = [
+  playlist = [
     { title: "Flutter (Lyrics)", artist: "Diamond Eyes", file: "music/D77DeiIOv14.mp3" },
     { title: "Everything (Lyrics)", artist: "Diamond Eyes", file: "music/nvZCtQAEBoE.mp3" },
     { title: "If I Disappear (ft. Tom Mårtensson)", artist: "Tobu", file: "music/iHA1utIzpws.mp3" },
