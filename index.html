@@ -572,7 +572,7 @@ function loadSong(){
 function playSong(){
     music.play();
     playBtn.textContent = "I I";
-	if (audio.paused) {
+	if (music.paused) {
 		loadSong();
 		playSong();
 	}
