@@ -573,6 +573,7 @@ function playSong(){
 	playBtn.textContent = "▶";
 	if (music.readyState == 0) {
 		loadSong()
+		setTimeout(playSong, 250);
 	} else {
     	music.play();
     	playBtn.textContent = "I I";
@@ -639,7 +640,7 @@ volumeRange.addEventListener('change', function() {
 music.addEventListener("ended", () => {
 
     loadSong();
-    playSong();
+    setTimeout(playSong, 250);
 
 });
 </script>
