@@ -549,7 +549,6 @@ const volumeRange = document.getElementById("volumer");
 const songTitle = document.getElementById("song-title");
 const songArtist = document.getElementById("song-artist");
 
-let currentSong = 0;
 let started = false;
 
 let playlist = [];
@@ -573,6 +572,9 @@ function loadSong(){
 function playSong(){
     music.play();
     playBtn.textContent = "I I";
+	if (audio.paused) {
+		loadSong();
+		playSong();
 }
 
 function pauseSong(){
