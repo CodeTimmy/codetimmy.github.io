@@ -570,11 +570,12 @@ function loadSong(){
 }
 
 function playSong(){
-    music.play();
-    playBtn.textContent = "I I";
-	if (music.paused) {
-		loadSong();
-		playSong();
+	playBtn.textContent = "▶";
+	if music.readyState = 0: {
+		loadSong()
+	} else: {
+    	music.play();
+    	playBtn.textContent = "I I";
 	}
 }
 
